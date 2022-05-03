@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 # Import libraries
 import mysql.connector
 import pandas as pd
@@ -16,8 +10,9 @@ import numpy as np
 
 st.title('Recommandation movies')
 
-# #Cleaning process regarding the variable that has the "time" variable, and rename it to something easier to write
+# # Cleaning process regarding the variable that has the "time" variable, and rename it to something easier to write
 #
+
 # title_basic["runtimeMinutes"].dropna()  #drop all na from the desiered column
 # title_basic["runtimeMinutes"].unique()  #one value is "nan", need to remove it
 # title_basic.rename(columns={"runtimeMinutes":"minutes"}, inplace=True) #change variable namefor something easier to write
@@ -99,3 +94,19 @@ st.title('Recommandation movies')
 # plt.title("Average length of movies/videos/tvmovies/short from 1874-2021", fontsize=25)
 # plt.tick_params(axis='both', which='major', labelsize=15)
 #
+
+
+st.markdown('# Top 5 magasins sharing the audience opinion')
+
+# Import files for the analyse
+rating_movies_audience_publisher = pd.read_csv("./data/rating_movies_audience_publisher")
+publishers_selection_differences = pd.read_csv("./data/publishers_selection_differences", skiprows=2)
+publishers_selection_differences.columns = ["publiser_name","mean","std","count","max"]
+publishers_list = list(publishers_selection_differences.sort_values(['mean','std'], ascending=[0,1]).head(10)["publiser_name"])
+
+# Get correlation 
+publishers_corr = pd.pivot_table(rating_movies_audience_publisher[rating_movies_audience_publisher.publisher_name.isin(publishers_list)],
+               values="review_score_float", index="rotten_tomatoes_link", columns=['publisher_name']).merge(rating_movies_audience_publisher[["rotten_tomatoes_link", "audience_rating"]], on="rotten_tomatoes_link").corr(min_periods=220)[["audience_rating"]]
+
+ax = sn.heatmap(publishers_corr.sort_values("audience_rating", ascending=False)[1:6])
+ax.set_yticklabels(list(publishers_corr.sort_values("audience_rating", ascending=False)[1:6].index))
