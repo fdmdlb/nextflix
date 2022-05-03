@@ -15,6 +15,8 @@ df_top10_minutes = pd.read_csv('./data/6ko_top10_minutes.csv')
 word_freq = pd.read_csv('./data/freq_words_rotten_vs_fresh.csv')
 word_freq.rename(columns={'Unnamed: 0':'word'}, inplace=True )
 
+lemmentize_words_genres = pd.read_csv('./data/genres_X_lem.csv')
+
 rating_movies_audience_publisher = pd.read_csv("./data/rating_movies_audience_publisher")
 publishers_selection_differences = pd.read_csv("./data/publishers_selection_differences", skiprows=2)
 publishers_selection_differences.columns = ["publiser_name","mean","std","count","max"]
