@@ -33,6 +33,10 @@ with col2:
     st.header("Top 10 in number of minutes translated")
     df_top10_minutes
 
+st.markdown('# Most frequents words by genres')
+
+lemmentize_words_genres
+
 st.markdown('# Most frequents words in Rotten vs Fresh movies')
 
 list_fresh = word_freq[(word_freq.freq_total > 0.4)].sort_values(["rel_fresh"], ascending=[0]).head(10)["word"].values
