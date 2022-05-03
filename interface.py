@@ -123,8 +123,8 @@ publishers_corr = pd.pivot_table(rating_movies_audience_publisher[rating_movies_
 
 fig_corr, ax_corr = plt.subplots()
 
-ax_corr = sn.heatmap(publishers_corr.sort_values("audience_rating", ascending=False)[1:6])
+ax_corr = sn.heatmap(publishers_corr.sort_values("audience_rating", ascending=False)[1:6], annot=True)
 ax_corr.set_yticklabels(list(publishers_corr.sort_values("audience_rating", ascending=False)[1:6].index))
 
-publishers_corr.sort_values("audience_rating", ascending=False)[1:6]
+#publishers_corr.sort_values("audience_rating", ascending=False)[1:6]
 st.pyplot(fig_corr)
