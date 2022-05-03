@@ -108,5 +108,11 @@ publishers_list = list(publishers_selection_differences.sort_values(['mean','std
 publishers_corr = pd.pivot_table(rating_movies_audience_publisher[rating_movies_audience_publisher.publisher_name.isin(publishers_list)],
                values="review_score_float", index="rotten_tomatoes_link", columns=['publisher_name']).merge(rating_movies_audience_publisher[["rotten_tomatoes_link", "audience_rating"]], on="rotten_tomatoes_link").corr(min_periods=220)[["audience_rating"]]
 
-ax = sn.heatmap(publishers_corr.sort_values("audience_rating", ascending=False)[1:6])
-ax.set_yticklabels(list(publishers_corr.sort_values("audience_rating", ascending=False)[1:6].index))
+fig_corr, ax_corr = plt.subplots()
+
+ax_corr = sn.heatmap(publishers_corr.sort_values("audience_rating", ascending=False)[1:6])
+ax_corr.set_yticklabels(list(publishers_corr.sort_values("audience_rating", ascending=False)[1:6].index))
+
+publishers_corr.sort_values("audience_rating", ascending=False)[1:6]
+st.pyplot(fig_corr)
+
