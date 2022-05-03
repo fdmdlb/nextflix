@@ -95,6 +95,19 @@ st.title('Recommandation movies')
 # plt.tick_params(axis='both', which='major', labelsize=15)
 #
 
+st.markdown('# International')
+
+df_top10_number = pd.read_csv('./data/6ko_top10_number.csv')
+df_top10_minutes = pd.read_csv('./data/6ko_top10_minutes.csv')
+
+col1, col2 = st.columns(2)
+with col1:
+    st.header("Top 10 in number of media translated")
+    df_top10_number
+with col2:
+    st.header("Top 10 in number of minutes translated")
+    df_top10_minutes
+
 
 st.markdown('# Top 5 magasins sharing the audience opinion')
 
@@ -104,7 +117,7 @@ publishers_selection_differences = pd.read_csv("./data/publishers_selection_diff
 publishers_selection_differences.columns = ["publiser_name","mean","std","count","max"]
 publishers_list = list(publishers_selection_differences.sort_values(['mean','std'], ascending=[0,1]).head(10)["publiser_name"])
 
-# Get correlation 
+# Get correlation
 publishers_corr = pd.pivot_table(rating_movies_audience_publisher[rating_movies_audience_publisher.publisher_name.isin(publishers_list)],
                values="review_score_float", index="rotten_tomatoes_link", columns=['publisher_name']).merge(rating_movies_audience_publisher[["rotten_tomatoes_link", "audience_rating"]], on="rotten_tomatoes_link").corr(min_periods=220)[["audience_rating"]]
 
@@ -115,4 +128,3 @@ ax_corr.set_yticklabels(list(publishers_corr.sort_values("audience_rating", asce
 
 publishers_corr.sort_values("audience_rating", ascending=False)[1:6]
 st.pyplot(fig_corr)
-
