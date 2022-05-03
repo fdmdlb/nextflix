@@ -109,7 +109,7 @@ with col2:
     df_top10_minutes
 
 
-st.markdown('# Top 5 magasins sharing the audience opinion')
+st.markdown('# Top 5 magazins sharing the audience opinion')
 
 # Import files for the analyse
 rating_movies_audience_publisher = pd.read_csv("./data/rating_movies_audience_publisher")
