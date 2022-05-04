@@ -5,3 +5,4 @@ streamlit==1.7.0
 mysql-connector==2.2.9
 plotly==5.7.0
 wordcloud==1.8.1
+sklearn==0.0
