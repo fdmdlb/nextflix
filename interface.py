@@ -122,6 +122,7 @@ if selected==nav_list[3]:
     plt.tick_params(axis='both', which='major', labelsize=15)
 
     st.pyplot(fig2_j)
+    st.download_buuton(label="download chart",data=fig2_j)
 
 if selected==nav_list[4]:
     #second visualization
