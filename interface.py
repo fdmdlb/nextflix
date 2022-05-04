@@ -75,3 +75,65 @@ ax_corr.set_yticklabels(list(publishers_corr.sort_values("audience_rating", asce
 
 #publishers_corr.sort_values("audience_rating", ascending=False)[1:6]
 st.pyplot(fig_corr)
+
+#####JOANA PART########################
+
+title_basic_table = pd.read_csv('./data/joana_visualization1.csv')
+title_basic = pd.read_csv('./data/joana_visualization2.csv')
+
+
+#first visualization
+
+st.markdown('# Individual length evolution in minutes from 1874-2021')
+
+sn.set(rc = {'figure.figsize':(15,8)})
+sn.set_style("white")
+fig2_j,ax_j2=plt.subplots()
+
+ax_j2=sn.lineplot(data=title_basic_table, x="startYear", y="movie", color="blue", label = "Movie")
+sn.lineplot(data=title_basic_table, x="startYear", y="short", color="grey", label = "Short")
+sn.lineplot(data=title_basic_table, x="startYear", y="tvmovie", color="black", label = "TV Movie")
+sn.lineplot(data=title_basic_table, x="startYear", y="video", color="orange", label = "Video")
+plt.legend(title='Media Products:', fontsize=12)
+plt.xlabel('Year', fontsize=20);
+plt.ylabel('Minutes', fontsize=20);
+#plt.title('The length evolution of media products', fontsize=25)
+plt.tick_params(axis='both', which='major', labelsize=15)
+
+st.pyplot(fig2_j)
+
+
+#second visualization
+
+st.markdown('# Average movie* length evolution from 1874-2021')
+
+sn.set(rc = {'figure.figsize':(15,8)})
+sn.set_style("white")  
+fig1_j,ax_j1=plt.subplots()
+
+ax_j1= sn.lineplot(data=title_basic, x="startYear", y="minutes").set(xlabel="Year", ylabel="Minutes")
+plt.xlabel('Year', fontsize=20)
+plt.ylabel('Minutes', fontsize=20);
+#plt.title("Average length of movies/videos/tvmovies/short from 1874-2021", fontsize=25)
+plt.tick_params(axis='both', which='major', labelsize=15)
+
+st.pyplot(fig1_j)
+
+
+##joao part####
+
+
+
+= pd.read_csv('./data/joao_visualization1.csv')
+ = pd.read_csv('./data/joao_visualization2.csv')
+    
+sn.set(rc = {'figure.figsize':(15,8)})
+sn.set_style("white")  
+    
+    
+    
+#first visualization
+st.markdown('# Average movie* length evolution from 1874-2021')
+
+#second visualization
+
