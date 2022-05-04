@@ -51,7 +51,7 @@ wordcloud = WordCloud(background_color="rgba(0,0,0,0)",width=700,height=500, min
 st.image(wordcloud.to_array())
 
 st.markdown('# Most frequents words in Rotten vs Fresh movies')
-
+sn.set_style("white")
 list_fresh = word_freq[(word_freq.freq_total > 0.4)].sort_values(["rel_fresh"], ascending=[0]).head(10)["word"].values
 list_rotten = word_freq[(word_freq.freq_total > 0.4)].sort_values(["rel_rot"], ascending=[0]).head(10)["word"].values
 list_words = np.append(list_rotten, list_fresh)
