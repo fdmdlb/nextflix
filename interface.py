@@ -9,6 +9,9 @@ from ast import literal_eval
 from sklearn.feature_extraction.text import CountVectorizer
 from wordcloud import WordCloud
 
+top5_movies = pd.read_csv('./data/joaoTop5MOVIES.csv')
+top5_genres=pd.read_csv('./data/joaoGGroupedtop5GENRES.csv')
+    
 df_top10_number = pd.read_csv('./data/6ko_top10_number.csv')
 df_top10_minutes = pd.read_csv('./data/6ko_top10_minutes.csv')
 
@@ -139,9 +142,6 @@ if selected==nav_list[4]:
 
 if selected==nav_list[5]:
     ##joao part####
-    top5_movies = pd.read_csv('./data/joaoTop5MOVIES.csv')
-    top5_genres=pd.read_csv('./data/joaoGGroupedtop5GENRES.csv')
-
     st.markdown('# Top 5 popular movies and respective characteristics')
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
