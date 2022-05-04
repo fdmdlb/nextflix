@@ -111,8 +111,8 @@ st.pyplot(fig1_j)
 
 
 
-= pd.read_csv('./data/joao_visualization1.csv')
- = pd.read_csv('./data/joao_visualization2.csv')
+#= pd.read_csv('./data/joaoTop_genres.csv')
+#= pd.read_csv('./data/joaoTop5MOVIES.csv')
     
 sn.set(rc = {'figure.figsize':(15,8)})
 sn.set_style("white")  
