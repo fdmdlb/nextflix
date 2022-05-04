@@ -31,7 +31,7 @@ nav_list = ["International",
             "Most representative reviews",
             "Individual length",
             "Average movie length",
-            "?"
+            "Top 5 popular movies"
             ]
 
 with st.sidebar:
