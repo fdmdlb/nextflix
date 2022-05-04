@@ -108,3 +108,19 @@ st.pyplot(fig1_j)
 
 
 ##joao part####
+
+
+
+= pd.read_csv('./data/joao_visualization1.csv')
+ = pd.read_csv('./data/joao_visualization2.csv')
+    
+sn.set(rc = {'figure.figsize':(15,8)})
+sn.set_style("white")  
+    
+    
+    
+#first visualization
+st.markdown('# Average movie* length evolution from 1874-2021')
+
+#second visualization
+
