@@ -31,7 +31,7 @@ nav_list = ["International",
             "Most representative reviews",
             "Individual length",
             "Average movie length",
-            "?"
+            "Top 5 popular movies"
             ]
 
 with st.sidebar:
@@ -63,7 +63,6 @@ if selected==nav_list[1]:
     wordcloud = WordCloud(background_color="rgba(0,0,0,0)",width=700,height=500, min_font_size=10).generate_from_frequencies(df_matrix.sum())
     st.image(wordcloud.to_array())
 
-if selected==nav_list[2]:
     st.markdown('# Most frequents words in Rotten vs Fresh movies')
     list_fresh = word_freq[(word_freq.freq_total > 0.4)].sort_values(["rel_fresh"], ascending=[0]).head(10)["word"].values
     list_rotten = word_freq[(word_freq.freq_total > 0.4)].sort_values(["rel_rot"], ascending=[0]).head(10)["word"].values
@@ -72,6 +71,7 @@ if selected==nav_list[2]:
     fig = px.bar(word_freq[word_freq["word"].isin(list_words)].sort_values("General"), x='word', y=["Fresh", "Rotten"], title="Rotten vs Fresh movies", barmode="group")
     st.plotly_chart(fig)
 
+if selected==nav_list[2]:
     st.markdown('# Top 5 reviews sharing the audience opinion')
 
     # Import files for the analyse
