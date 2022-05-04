@@ -11,7 +11,7 @@ from wordcloud import WordCloud
 
 top5_movies = pd.read_csv('./data/joaoTop5MOVIES.csv')
 top5_genres=pd.read_csv('./data/joaoGGroupedtop5GENRES.csv')
-    
+
 df_top10_number = pd.read_csv('./data/6ko_top10_number.csv')
 df_top10_minutes = pd.read_csv('./data/6ko_top10_minutes.csv')
 
@@ -47,16 +47,12 @@ with st.sidebar:
 if selected==nav_list[7]:
     st.markdown('# Recommandation System')
     # add the Recommandation code | Integrate the partial file from recommandation system
+    from cultural_interest import display
+    st.write(display())
 
 if selected==nav_list[0]:
     st.markdown('# International')
-    col1, col2 = st.columns(2)
-    with col1:
-        st.header("Top 10 in number of media translated")
-        df_top10_number
-    with col2:
-        st.header("Top 10 in number of minutes translated")
-        df_top10_minutes
+    import cultural_interest
 
 if selected==nav_list[1]:
     st.markdown('# words analyse')
@@ -145,8 +141,8 @@ if selected==nav_list[5]:
     st.markdown('# Top 5 popular movies and respective characteristics')
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
-    st.dataframe(top5_movies) 
-    
+    st.dataframe(top5_movies)
+
 
 if selected==nav_list[6]:
     st.markdown('# Top 5 Genres')
