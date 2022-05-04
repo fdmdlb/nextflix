@@ -4,6 +4,9 @@ import streamlit as st
 import seaborn as sn
 from matplotlib import pyplot as plt
 
+import cultural_interest
+import words_count
+
 top5_movies = pd.read_csv('./data/joaoTop5MOVIES.csv')
 top5_genres=pd.read_csv('./data/joaoGGroupedtop5GENRES.csv')
 
@@ -34,16 +37,16 @@ with st.sidebar:
 if selected==nav_list[7]:
     st.markdown('# Recommandation System')
     # add the Recommandation code | Integrate the partial file from recommandation system
-    import cultural_interest
+    cultural_interest.display_international()
 
 if selected==nav_list[0]:
     st.markdown('# International')
-    import cultural_interest
+    cultural_interest.display_international()
 
 if selected==nav_list[1]:
     st.markdown('# words analyse')
     st.markdown('## Words by genre')
-    import words_count
+    words_count.display_wordcloud()
 
 if selected==nav_list[2]:
     st.markdown('# Top 5 reviews sharing the audience opinion')
