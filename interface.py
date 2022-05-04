@@ -32,6 +32,7 @@ nav_list = ["International",
             "Individual length",
             "Average movie length",
             "Top 5 popular movies",
+            "Top 5 Genres",
             "Recommandation system"
             ]
 
@@ -40,7 +41,7 @@ with st.sidebar:
          'Select a genre',
          options=nav_list)
 
-if selected==nav_list[6]:
+if selected==nav_list[7]:
     st.markdown('# Recommandation System')
     # add the Recommandation code | Integrate the partial file from recommandation system
 
@@ -141,11 +142,11 @@ if selected==nav_list[5]:
     top5_movies = pd.read_csv('./data/joaoTop5MOVIES.csv')
     top5_genres=pd.read_csv('./data/joaoGGroupedtop5GENRES.csv')
 
-    st.markdown('#Top 5 popular movies and respective characteristics')
+    st.markdown('# Top 5 popular movies and respective characteristics')
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
     st.dataframe(top5_movies)
 
 if selected==nav_list[6]:
-    st.markdown('#Top 5 Genres')
+    st.markdown('# Top 5 Genres')
     st.dataframe(top5_genres)
