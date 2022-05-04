@@ -1,13 +1,13 @@
 # Import libraries
-import mysql.connector
 import pandas as pd
 import streamlit as st
-import getpass
 import seaborn as sn
 from matplotlib import pyplot as plt
 import numpy as np
 import plotly.express as px
-
+from ast import literal_eval
+from sklearn.feature_extraction.text import CountVectorizer
+from wordcloud import WordCloud
 
 df_top10_number = pd.read_csv('./data/6ko_top10_number.csv')
 df_top10_minutes = pd.read_csv('./data/6ko_top10_minutes.csv')
@@ -15,7 +15,7 @@ df_top10_minutes = pd.read_csv('./data/6ko_top10_minutes.csv')
 word_freq = pd.read_csv('./data/freq_words_rotten_vs_fresh.csv')
 word_freq.rename(columns={'Unnamed: 0':'word'}, inplace=True )
 
-lemmentize_words_genres = pd.read_csv('./data/genres_X_lem.csv')
+lemmentize_words_genres = pd.read_csv('./data/genres_X_lem.csv', converters={"genres": literal_eval, "X_lem": literal_eval})
 
 rating_movies_audience_publisher = pd.read_csv("./data/rating_movies_audience_publisher")
 publishers_selection_differences = pd.read_csv("./data/publishers_selection_differences", skiprows=2)
@@ -35,7 +35,20 @@ with col2:
 
 st.markdown('# Most frequents words by genres')
 
-lemmentize_words_genres
+# Set an input to choose region
+
+genres_explodes = lemmentize_words_genres.explode(["genres"])
+
+genre_selected = st.selectbox(
+     'Select a genre',
+     options=list(genres_explodes["genres"].value_counts().index))
+
+X = genres_explodes[genres_explodes["genres"] == genre_selected]['X_lem'].apply(lambda wlist: " ".join(wlist))
+vectorizer = CountVectorizer(max_features=10)
+text_matrix = vectorizer.fit_transform(X)
+df_matrix = pd.DataFrame(text_matrix.toarray(), columns = vectorizer.get_feature_names_out())
+wordcloud = WordCloud(background_color="rgba(0,0,0,0)",width=700,height=500, min_font_size=10).generate_from_frequencies(df_matrix.sum())
+st.image(wordcloud.to_array())
 
 st.markdown('# Most frequents words in Rotten vs Fresh movies')
 
