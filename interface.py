@@ -121,11 +121,9 @@ st.pyplot(fig1_j)
 
 
 ##joao part####
-
-#= pd.read_csv('./data/joaoTop_genres.csv')
 top5_movies = pd.read_csv('./data/joaoTop5MOVIES.csv')
 
-st.markdown('#Top 5 Movies regarding popularity with respective characteristics')
+st.title('Top 5 popular movies and respective characteristics')
 sn.set(rc = {'figure.figsize':(15,8)})
 sn.set_style("white")
 st.dataframe(top5_movies)
