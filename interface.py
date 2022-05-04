@@ -84,7 +84,7 @@ sn.lineplot(data=title_basic_table, x="startYear", y="video", color="orange", la
 plt.legend(title='Media Products:', fontsize=12)
 plt.xlabel('Year', fontsize=20);
 plt.ylabel('Minutes', fontsize=20);
-plt.title('The length evolution of media products', fontsize=25)
+#plt.title('The length evolution of media products', fontsize=25)
 plt.tick_params(axis='both', which='major', labelsize=15)
 
 st.pyplot(fig2_j)
