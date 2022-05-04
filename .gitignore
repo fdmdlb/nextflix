@@ -1,4 +1,5 @@
 *.csv
 !data/*.csv
+!test/*.csv
 *.tsv
 **/.DS_Store
