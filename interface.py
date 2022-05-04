@@ -31,13 +31,18 @@ nav_list = ["International",
             "Most representative reviews",
             "Individual length",
             "Average movie length",
-            "Top 5 popular movies"
+            "Top 5 popular movies",
+            "Recommandation system"
             ]
 
 with st.sidebar:
     selected = st.selectbox(
          'Select a genre',
          options=nav_list)
+
+if selected==nav_list[6]:
+    st.markdown('# Recommandation System')
+    # add the Recommandation code | Integrate the partial file from recommandation system
 
 if selected==nav_list[0]:
     st.markdown('# International')
