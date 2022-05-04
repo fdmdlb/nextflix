@@ -56,7 +56,7 @@ list_fresh = word_freq[(word_freq.freq_total > 0.4)].sort_values(["rel_fresh"], 
 list_rotten = word_freq[(word_freq.freq_total > 0.4)].sort_values(["rel_rot"], ascending=[0]).head(10)["word"].values
 list_words = np.append(list_rotten, list_fresh)
 #word_freq
-fig = px.bar(word_freq[word_freq["word"].isin(list_words)].sort_values("General"), x='word', y=["Fresh", "Rotten"], title="Rotten vs Fresh movies")
+fig = px.bar(word_freq[word_freq["word"].isin(list_words)].sort_values("General"), x='word', y=["Fresh", "Rotten"], title="Rotten vs Fresh movies", barmode="group")
 st.plotly_chart(fig)
 
 st.markdown('# Top 5 reviews sharing the audience opinion')
@@ -108,7 +108,7 @@ st.pyplot(fig2_j)
 st.markdown('# Average movie* length evolution from 1874-2021')
 
 sn.set(rc = {'figure.figsize':(15,8)})
-sn.set_style("white")  
+sn.set_style("white")
 fig1_j,ax_j1=plt.subplots()
 
 ax_j1= sn.lineplot(data=title_basic, x="startYear", y="minutes").set(xlabel="Year", ylabel="Minutes")
@@ -126,14 +126,13 @@ st.pyplot(fig1_j)
 
 = pd.read_csv('./data/joao_visualization1.csv')
  = pd.read_csv('./data/joao_visualization2.csv')
-    
+
 sn.set(rc = {'figure.figsize':(15,8)})
-sn.set_style("white")  
-    
-    
-    
+sn.set_style("white")
+
+
+
 #first visualization
 st.markdown('# Average movie* length evolution from 1874-2021')
 
 #second visualization
-
