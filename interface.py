@@ -32,6 +32,7 @@ nav_list = ["International",
             "Individual length",
             "Average movie length",
             "Top 5 popular movies"
+
             ]
 
 with st.sidebar:
@@ -131,8 +132,13 @@ if selected==nav_list[4]:
 if selected==nav_list[5]:
     ##joao part####
     top5_movies = pd.read_csv('./data/joaoTop5MOVIES.csv')
-
+    top5_genres=pd.read_csv('./data/joaoGGroupedtop5GENRES.csv'
+                          
     st.title('Top 5 popular movies and respective characteristics')
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
     st.dataframe(top5_movies)
+  
+if selected==nav_list[6]:
+    st.title('Top 5 Genres')
+    st.dataframe(top5_genres)
