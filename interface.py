@@ -95,7 +95,7 @@ sn.set_style("white")
 fig2_j,ax_j2=plt.subplots()
 
 ax_j2=sn.lineplot(data=title_basic_table, x="startYear", y="movie", color="blue", label = "Movie")
-sn.lineplot(data=title_basic_table, x="startYear", y="short", color="purple", label = "Short")
+sn.lineplot(data=title_basic_table, x="startYear", y="short", color="grey", label = "Short")
 sn.lineplot(data=title_basic_table, x="startYear", y="tvmovie", color="black", label = "TV Movie")
 sn.lineplot(data=title_basic_table, x="startYear", y="video", color="orange", label = "Video")
 plt.legend(title='Media Products:', fontsize=12)
