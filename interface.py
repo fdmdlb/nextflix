@@ -47,8 +47,7 @@ with st.sidebar:
 if selected==nav_list[7]:
     st.markdown('# Recommandation System')
     # add the Recommandation code | Integrate the partial file from recommandation system
-    from cultural_interest import display
-    st.write(display())
+    import cultural_interest
 
 if selected==nav_list[0]:
     st.markdown('# International')
