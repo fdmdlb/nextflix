@@ -31,15 +31,9 @@ nav_list = ["International",
             "Most representative reviews",
             "Individual length",
             "Average movie length",
-<<<<<<< HEAD
-            "Top 5 Movies"
-            "Top 5 Genres
-
-=======
-            "Top 5 popular movies",
+            "Top 5 Movies",
             "Top 5 Genres",
             "Recommandation system"
->>>>>>> b2d3d6645eb26e20eb0e3e8978c78ddbd816d0f9
             ]
 
 with st.sidebar:
@@ -151,13 +145,9 @@ if selected==nav_list[5]:
     st.markdown('# Top 5 popular movies and respective characteristics')
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
-<<<<<<< HEAD
     st.dataframe(top5_movies) 
     
-=======
-    st.dataframe(top5_movies)
 
->>>>>>> b2d3d6645eb26e20eb0e3e8978c78ddbd816d0f9
 if selected==nav_list[6]:
     st.markdown('# Top 5 Genres')
     st.dataframe(top5_genres)
