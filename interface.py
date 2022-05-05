@@ -145,8 +145,7 @@ if selected==nav_list[5]:
     for i in range(0,4):
         image_movie = Image.open(img2[i])
         st.image_movie(image_movie, width=400)
-       
-
+        
 if selected==nav_list[6]:
     st.markdown(f'# {nav_list[6]}')
     st.dataframe(top5_genres)
