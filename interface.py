@@ -7,6 +7,9 @@ from matplotlib import pyplot as plt
 import cultural_interest
 import words_count
 
+df_top10_number = pd.read_csv('./data/6ko_top10_number.csv')
+df_top10_minutes = pd.read_csv('./data/6ko_top10_minutes.csv')
+
 top5_movies = pd.read_csv('./data/joaoTop5MOVIES.csv')
 top5_genres=pd.read_csv('./data/joaoGGroupedtop5GENRES.csv')
 
@@ -116,3 +119,12 @@ if selected==nav_list[5]:
 if selected==nav_list[6]:
     st.markdown(f'# {nav_list[6]}')
     st.dataframe(top5_genres)
+    
+    def display_international():
+    col1, col2 = st.columns(2)
+    with col1:
+        st.header("Top 10 in number of media translated")
+        st.dataframe(df_top10_number)
+    with col2:
+        st.header("Top 10 in number of minutes translated")
+        st.dataframe(df_top10_minutes)
