@@ -146,8 +146,6 @@ if selected==nav_list[5]:
         image = Image.open(img2[i])
         st.image(image, width=400)
         
-        dicto={"Tile": top5_movies['Title'].values[i], "Genres": top5_movies["Genres"].values[i], "Avg.Rating": top5_movies["Avg. Rating"].values[i], "Num.Votes": top5_movies["Num.Votes"].values[i], "Popularity": round(top5_movies["Popularity"].values[i]/1000000,2)}
-        st.write(dicto)
 
 
 if selected==nav_list[6]:
