@@ -21,10 +21,10 @@ st.title('Recommandation movies')
 
 nav_list = ["International",
             "Words analyse",
-            "Most representative reviews",
-            "Individual length",
-            "Average movie length",
-            "Top 5 Movies",
+            "Top 5 reviews sharing the audience opinion",
+            "Individual length evolution in minutes from 1874-2021",
+            "Average movie* length evolution from 1874-2021",
+            "Top 5 popular movies and respective characteristics",
             "Top 5 Genres",
             "Recommandation system"
             ]
@@ -40,16 +40,15 @@ if selected==nav_list[7]:
     cultural_interest.display_international()
 
 if selected==nav_list[0]:
-    st.markdown('# International')
+    st.markdown(f'# {nav_list[0]}')
     cultural_interest.display_international()
 
 if selected==nav_list[1]:
-    st.markdown('# words analyse')
-    st.markdown('## Words by genre')
+    st.markdown(f'# {nav_list[1]}')
     words_count.display_wordcloud()
 
 if selected==nav_list[2]:
-    st.markdown('# Top 5 reviews sharing the audience opinion')
+    st.markdown(f'# {nav_list[2]}')
 
     # Import files for the analyse
     publishers_list = list(publishers_selection_differences.sort_values(['mean','std'], ascending=[0,1]).head(10)["publiser_name"])
@@ -70,7 +69,7 @@ if selected==nav_list[3]:
     #####JOANA PART########################
     #first visualization
 
-    st.markdown('# Individual length evolution in minutes from 1874-2021')
+    st.markdown(f'# {nav_list[3]}')
 
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
@@ -92,7 +91,7 @@ if selected==nav_list[3]:
 if selected==nav_list[4]:
     #second visualization
 
-    st.markdown('# Average movie* length evolution from 1874-2021')
+    st.markdown(f'# {nav_list[4]}')
 
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
@@ -108,12 +107,12 @@ if selected==nav_list[4]:
 
 if selected==nav_list[5]:
     ##joao part####
-    st.markdown('# Top 5 popular movies and respective characteristics')
+    st.markdown(f'# {nav_list[5]}')
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
     st.dataframe(top5_movies)
 
 
 if selected==nav_list[6]:
-    st.markdown('# Top 5 Genres')
+    st.markdown(f'# {nav_list[6]}')
     st.dataframe(top5_genres)
