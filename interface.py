@@ -29,8 +29,7 @@ nav_list = ["International",
             "Average movie* length evolution from 1874-2021",
             "Top 5 popular movies and respective characteristics",
             "Top 5 Genres",
-            "Top 10 in number of media translated",
-            "Top 10 in number of minutes translated",
+            "Top 10 translating countries,
             "Recommandation system"
             ]
 
@@ -115,38 +114,38 @@ if selected==nav_list[4]:
     #second visualization
 
     st.markdown(f'# {nav_list[4]}')
+    st.title('coming soon')
+    # sn.set(rc = {'figure.figsize':(15,8)})
+    # sn.set_style("white")
+    # fig1_j,ax_j1=plt.subplots()
 
-    sn.set(rc = {'figure.figsize':(15,8)})
-    sn.set_style("white")
-    fig1_j,ax_j1=plt.subplots()
+    # ax_j1= sn.lineplot(data=title_basic, x="startYear", y="minutes").set(xlabel="Year", ylabel="Minutes")
+    # plt.xlabel('Year', fontsize=20)
+    # plt.ylabel('Minutes', fontsize=20);
+    # #plt.title("Average length of movies/videos/tvmovies/short from 1874-2021", fontsize=25)
+    # plt.tick_params(axis='both', which='major', labelsize=15)
 
-    ax_j1= sn.lineplot(data=title_basic, x="startYear", y="minutes").set(xlabel="Year", ylabel="Minutes")
-    plt.xlabel('Year', fontsize=20)
-    plt.ylabel('Minutes', fontsize=20);
-    #plt.title("Average length of movies/videos/tvmovies/short from 1874-2021", fontsize=25)
-    plt.tick_params(axis='both', which='major', labelsize=15)
+    # st.pyplot(fig1_j)
 
-    st.pyplot(fig1_j)
-
-if selected==nav_list[5]:
-    ##joao part####
-    st.markdown(f'# {nav_list[5]}')
-    sn.set(rc = {'figure.figsize':(15,8)})
-    sn.set_style("white")
+# if selected==nav_list[5]:
+    # ##joao part####
+    # st.markdown(f'# {nav_list[5]}')
+    # sn.set(rc = {'figure.figsize':(15,8)})
+    # sn.set_style("white")
     
-    #st.dataframe(top5_movies)
+    # #st.dataframe(top5_movies)
     
-    img2 = ["./data/redemption.png",
-            "./data/The_Dark_Knight.png",
-            "./data/inception_32.png",
-            "./data/fightCLUB.png",
-            "./data/PULPfiction.png"]
+    # img2 = ["./data/redemption.png",
+            # "./data/The_Dark_Knight.png",
+            # "./data/inception_32.png",
+            # "./data/fightCLUB.png",
+            # "./data/PULPfiction.png"]
     
-    for i in range(0,4):
-        image_movie = Image.open(img2[i])
-        st.image_movie(image_movie, width=400)
+    # for i in range(0,4):
+        # image_movie = Image.open(img2[i])
+        # st.image_movie(image_movie, width=400)
         
-if selected==nav_list[6]:
+if selected==nav_list[5]:
     st.markdown(f'# {nav_list[6]}')
     st.dataframe(top5_genres)
 
