@@ -7,8 +7,8 @@ import cultural_interest
 import words_count
 from PIL import Image
 
-#df_top10_number = pd.read_csv('./data/6ko_top10_number.csv')
-#df_top10_minutes = pd.read_csv('./data/6ko_top10_minutes.csv')
+df_top10_number = pd.read_csv('./data/6ko_top10_number.csv')
+df_top10_minutes = pd.read_csv('./data/6ko_top10_minutes.csv')
 
 top5_movies = pd.read_csv('./data/joaoTop5MOVIES.csv')
 top5_genres=pd.read_csv('./data/joaoGGroupedtop5GENRES.csv')
