@@ -121,10 +121,10 @@ if selected==nav_list[6]:
     st.dataframe(top5_genres)
     
     def display_international():
-    col1, col2 = st.columns(2)
-    with col1:
-        st.header("Top 10 in number of media translated")
-        st.dataframe(df_top10_number)
-    with col2:
-        st.header("Top 10 in number of minutes translated")
-        st.dataframe(df_top10_minutes)
+        col1, col2 = st.columns(2)
+        with col1:
+            st.header("Top 10 in number of media translated")
+            st.dataframe(df_top10_number)
+        with col2:
+            st.header("Top 10 in number of minutes translated")
+            st.dataframe(df_top10_minutes)
