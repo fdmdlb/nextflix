@@ -29,7 +29,7 @@ nav_list = ["International",
             "Average movie* length evolution from 1874-2021",
             "Top 5 popular movies and respective characteristics",
             "Top 5 Genres",
-            "Top 10 translating countries,
+            "Top 10 translating countries",
             "Recommandation system"
             ]
 
