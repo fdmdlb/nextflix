@@ -38,8 +38,8 @@ with st.sidebar:
          'Select a genre',
          options=nav_list)
 
-if selected==nav_list[9]:
-    st.markdown(f'# {nav_list[9]}')
+if selected==nav_list[8]:
+    st.markdown(f'# {nav_list[8]}')
     # add the Recommandation code | Integrate the partial file from recommandation system
     cultural_interest.display_international()
 
