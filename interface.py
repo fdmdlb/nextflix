@@ -3,7 +3,6 @@ import pandas as pd
 import streamlit as st
 import seaborn as sn
 from matplotlib import pyplot as plt
-
 import cultural_interest
 import words_count
 
@@ -48,6 +47,8 @@ if selected==nav_list[1]:
     words_count.display_wordcloud()
 
 if selected==nav_list[2]:
+    from PIL import Image
+
     st.markdown(f'# {nav_list[2]}')
 
     # Import files for the analyse
@@ -57,13 +58,31 @@ if selected==nav_list[2]:
     publishers_corr = pd.pivot_table(rating_movies_audience_publisher[rating_movies_audience_publisher.publisher_name.isin(publishers_list)],
                    values="review_score_float", index="rotten_tomatoes_link", columns=['publisher_name']).merge(rating_movies_audience_publisher[["rotten_tomatoes_link", "audience_rating"]], on="rotten_tomatoes_link").corr(min_periods=220)[["audience_rating"]]
 
-    fig_corr, ax_corr = plt.subplots()
+    top_5_reviews = publishers_corr.sort_values("audience_rating", ascending=False)[1:6]
 
-    ax_corr = sn.heatmap(publishers_corr.sort_values("audience_rating", ascending=False)[1:6], annot=True)
-    ax_corr.set_yticklabels(list(publishers_corr.sort_values("audience_rating", ascending=False)[1:6].index))
+    # critics = np.array(["https://twitter.com/KristianHarloff",
+    # "https://www.facebook.com/dvdtown",
+    # "https://americanprofile.com/",
+    # "https://eu.seacoastonline.com/",
+    # "https://thedivareview.com/"])
 
-    #publishers_corr.sort_values("audience_rating", ascending=False)[1:6]
-    st.pyplot(fig_corr)
+    img = ["./img/kristian.png",
+    "./img/metropolis.png",
+    "./img/american.png",
+    "./img/seacoast.png",
+    "./img/diva.png"]
+
+    col1, col2 = st.columns(2)
+    with col1:
+        for i in range(0, 2):
+            st.write(f"#{i+1} {top_5_reviews.index[i]} ({str(round(top_5_reviews['audience_rating'].values[i], 2))})")
+            image = Image.open(img[i])
+            st.image(image, width=300)
+    with col2:
+        for i in range(2, 5):
+            st.write(f"#{i+1} {top_5_reviews.index[i]} ({str(round(top_5_reviews['audience_rating'].values[i], 2))})")
+            image = Image.open(img[i])
+            st.image(image, width=300)
 
 if selected==nav_list[3]:
     #####JOANA PART########################
