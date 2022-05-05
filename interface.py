@@ -5,6 +5,7 @@ import seaborn as sn
 from matplotlib import pyplot as plt
 import cultural_interest
 import words_count
+from PIL import Image
 
 df_top10_number = pd.read_csv('./data/6ko_top10_number.csv')
 df_top10_minutes = pd.read_csv('./data/6ko_top10_minutes.csv')
@@ -52,8 +53,6 @@ if selected==nav_list[1]:
     words_count.display_wordcloud()
 
 if selected==nav_list[2]:
-    from PIL import Image
-
     st.markdown(f'# {nav_list[2]}')
 
     # Import files for the analyse
@@ -134,7 +133,21 @@ if selected==nav_list[5]:
     st.markdown(f'# {nav_list[5]}')
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
-    st.dataframe(top5_movies)
+    
+    #st.dataframe(top5_movies)
+    
+    img2 = ["./data/redemption.png",
+            "./data/The_Dark_Knight.png",
+            "./data/inception_32.png",
+            "./data/fightCLUB.png",
+            "./data/PULPfiction.png"]
+    
+    for i in range(0,4):
+        image = Image.open(img[i])
+        st.image(image, width=400)
+        
+        dicto={"Tile": top5_movies['Title'].values[i], "Genres": top5_movies["Genres"].values[i], "Avg.Rating": top5_movies["Avg. Rating"].values[i], "Num.Votes": top5_movies["Num.Votes"].values[i], "Popularity": round(top5_movies["Popularity"].values[i]/1000000,2)}
+        st.write(dicto)
 
 
 if selected==nav_list[6]:
