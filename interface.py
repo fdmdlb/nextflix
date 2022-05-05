@@ -143,19 +143,11 @@ if selected==nav_list[5]:
             "./data/PULPfiction.png"]
     
     for i in range(0,4):
-        image = Image.open(img2[i])
-        st.image(image, width=400)
+        image_movie = Image.open(img2[i])
+        st.image_movie(image_movie, width=400)
         
-
-
 if selected==nav_list[6]:
     st.markdown(f'# {nav_list[6]}')
     st.dataframe(top5_genres)
 
-if selected==nav_list[7]:
-    st.markdown(f'# {nav_list[7]}')
-    st.dataframe(df_top10_number)
-    
-if selected==nav_list[8]:
-    st.markdown(f'# {nav_list[8]}')
-    st.dataframe(df_top10_minutes)
+
