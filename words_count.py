@@ -31,5 +31,5 @@ def display_wordcloud():
         vectorizer = CountVectorizer(max_features=10)
         text_matrix = vectorizer.fit_transform(X)
         df_matrix = pd.DataFrame(text_matrix.toarray(), columns = vectorizer.get_feature_names_out())
-        wordcloud = WordCloud(background_color="rgba(0,0,0,0)",width=700,height=500, min_font_size=10).generate_from_frequencies(df_matrix.sum())
+        wordcloud = WordCloud(background_color=None, mode="RGBA" ,width=700,height=500, min_font_size=10).generate_from_frequencies(df_matrix.sum())
         st.image(wordcloud.to_array())
