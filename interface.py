@@ -29,6 +29,8 @@ nav_list = ["International",
             "Average movie* length evolution from 1874-2021",
             "Top 5 popular movies and respective characteristics",
             "Top 5 Genres",
+            "Top 10 in number of media translated",
+            "Top 10 in number of minutes translated",
             "Recommandation system"
             ]
 
@@ -37,8 +39,8 @@ with st.sidebar:
          'Select a genre',
          options=nav_list)
 
-if selected==nav_list[7]:
-    st.markdown(f'# {nav_list[7]}')
+if selected==nav_list[9]:
+    st.markdown(f'# {nav_list[9]}')
     # add the Recommandation code | Integrate the partial file from recommandation system
     cultural_interest.display_international()
 
@@ -119,12 +121,11 @@ if selected==nav_list[5]:
 if selected==nav_list[6]:
     st.markdown(f'# {nav_list[6]}')
     st.dataframe(top5_genres)
+
+if selected==nav_list[7]:
+    st.markdown(f'# {nav_list[7]}')
+    st.dataframe(df_top10_number)
     
-    def display_international():
-        col1, col2 = st.columns(2)
-        with col1:
-            st.header("Top 10 in number of media translated")
-            st.dataframe(df_top10_number)
-        with col2:
-            st.header("Top 10 in number of minutes translated")
-            st.dataframe(df_top10_minutes)
+if selected==nav_list[8]:
+    st.markdown(f'# {nav_list[8]}')
+    st.dataframe(df_top10_minutes)
