@@ -38,6 +38,7 @@ with st.sidebar:
          'Select a genre',
          options=nav_list)
 
+
 if selected==nav_list[9]:
     st.markdown(f'# {nav_list[9]}')
 
