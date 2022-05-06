@@ -145,7 +145,7 @@ if selected==nav_list[3]:
 
     st.pyplot(fig1_j)
 
-if selected==nav_list[5]:
+if selected==nav_list[4]:
     # ##joao part####
     st.markdown(f'# {nav_list[5]}')
     sn.set(rc = {'figure.figsize':(15,8)})
