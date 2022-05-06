@@ -165,6 +165,6 @@ if selected==nav_list[3]:
 if selected==nav_list[5]:
     st.markdown(f'# {nav_list[5]}')
     
-    fig_genre, ax_genre =plt.subplots()
-    ax_genre = px.bar(top5_genres, x="Genres", y="Pop.Score")
+    fig_genre, ax =plt()
+    ax = px.bar(top5_genres, x="Genres", y="Pop.Score")
     st.pyplot(fig_genre)
