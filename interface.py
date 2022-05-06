@@ -113,8 +113,7 @@ if selected==nav_list[2]:
     st.pyplot(fig2_j)
     #st.download_button(label="download chart",data=title_basic_table)
     
-    
-     list_movies = ["Canadian Army Newsreel",
+    list_movies = ["Canadian Army Newsreel",
     "Flighing Mushrooms",
     "Frogs on the plane",
     "Happy Dutch on Vacation",
