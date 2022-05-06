@@ -112,8 +112,10 @@ if selected==nav_list[2]:
 
     st.pyplot(fig2_j)
     #st.download_button(label="download chart",data=title_basic_table)
-    
-    list_movies = ["Canadian Army Newsreel",
+
+    list_movies = [
+    "Please choose an answer."
+    "Canadian Army Newsreel",
     "Flighing Mushrooms",
     "Frogs on the plane",
     "Happy Dutch on Vacation",
@@ -124,6 +126,8 @@ if selected==nav_list[2]:
      list_movies)
 
     if answer == list_movies[0]:
+     st.write('......')
+    if answer == list_movies[1]:
      st.write('Congrats, you win a full version of Canadian Army Newsreel ! :rocket:')
     else:
      st.write("Wrong, you are rotten ! :no_entry_sign:")
