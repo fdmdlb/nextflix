@@ -22,7 +22,7 @@ title_basic = pd.read_csv('./data/joana_visualization2.csv')
 
 st.title('Recommandation movies')
 
-nav_list = ["International",
+nav_list = [
             "Words analyse",
             "Top 5 reviews sharing the audience opinion",
             "Individual length evolution in minutes from 1874-2021",
@@ -39,26 +39,26 @@ with st.sidebar:
          options=nav_list)
 
 
-if selected==nav_list[8]:
-    st.markdown(f'# {nav_list[8]}')
+if selected==nav_list[7]:
+    st.markdown(f'# {nav_list[7]}')
     ########################################################################
     # Place for Recommandation system
     ########################################################################
 
-if selected==nav_list[7]:
-    st.markdown(f'# {nav_list[7]}')
+if selected==nav_list[6]:
+    st.markdown(f'# {nav_list[6]}')
     cultural_interest.display_international()
 
 # if selected==nav_list[0]:
 #     st.markdown(f'# {nav_list[0]}')
 #     cultural_interest.display_international()
 
-if selected==nav_list[1]:
-    st.markdown(f'# {nav_list[1]}')
+if selected==nav_list[0]:
+    st.markdown(f'# {nav_list[0]}')
     words_count.display_wordcloud()
 
-if selected==nav_list[2]:
-    st.markdown(f'# {nav_list[2]}')
+if selected==nav_list[1]:
+    st.markdown(f'# {nav_list[1]}')
 
     # Import files for the analyse
     publishers_list = list(publishers_selection_differences.sort_values(['mean','std'], ascending=[0,1]).head(10)["publiser_name"])
@@ -93,11 +93,11 @@ if selected==nav_list[2]:
             image = Image.open(img[i])
             st.image(image, width=300)
 
-if selected==nav_list[3]:
+if selected==nav_list[2]:
     #####JOANA PART########################
     #first visualization
 
-    st.markdown(f'# {nav_list[3]}')
+    st.markdown(f'# {nav_list[2]}')
 
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
@@ -116,10 +116,10 @@ if selected==nav_list[3]:
     st.pyplot(fig2_j)
     #st.download_button(label="download chart",data=title_basic_table)
 
-if selected==nav_list[4]:
+if selected==nav_list[3]:
     #second visualization
 
-    st.markdown(f'# {nav_list[4]}')
+    st.markdown(f'# {nav_list[3]}')
     st.title('coming soon')
     # sn.set(rc = {'figure.figsize':(15,8)})
     # sn.set_style("white")
@@ -132,6 +132,21 @@ if selected==nav_list[4]:
     # plt.tick_params(axis='both', which='major', labelsize=15)
 
     # st.pyplot(fig1_j)
+
+    list_movies = ["Canadian Army Newsreel",
+    "Flighing Mushrooms",
+    "Frogs on the plane",
+    "Happy Dutch on Vacation",
+    "Married with a codfish"]
+
+    answer = st.radio(
+     "What's your favorite movie genre",
+     list_movies)
+
+    if answer == list_movies[0]:
+     st.write('You selected comedy.')
+    else:
+     st.write("You didn't select comedy.")
 
 # if selected==nav_list[5]:
     # ##joao part####
@@ -151,6 +166,6 @@ if selected==nav_list[4]:
         # image_movie = Image.open(img2[i])
         # st.image_movie(image_movie, width=400)
 
-if selected==nav_list[5]:
+if selected==nav_list[6]:
     st.markdown(f'# {nav_list[6]}')
     st.dataframe(top5_genres)
