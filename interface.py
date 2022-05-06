@@ -6,6 +6,7 @@ from matplotlib import pyplot as plt
 import cultural_interest
 import words_count
 from PIL import Image
+import plotly.express as px
 
 df_top10_number = pd.read_csv('./data/6ko_top10_number.csv')
 df_top10_minutes = pd.read_csv('./data/6ko_top10_minutes.csv')
@@ -163,8 +164,7 @@ if selected==nav_list[3]:
         # st.image_movie(image_movie, width=400)
 
 if selected==nav_list[5]:
+
     st.markdown(f'# {nav_list[5]}')
-    
-    fig_genre, ax =plt()
-    ax = px.bar(top5_genres, x="Genres", y="Pop.Score")
+    fig_genre = px.bar(top5_genres, x="Genres", y="Pop.Score")
     st.pyplot(fig_genre)
