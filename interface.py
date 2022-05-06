@@ -129,7 +129,9 @@ if selected==nav_list[3]:
 
     # st.pyplot(fig1_j)
 
-    list_movies = ["Canadian Army Newsreel",
+    list_movies = [
+    "Choose the answer",
+    "Canadian Army Newsreel",
     "Flighing Mushrooms",
     "Frogs on the plane",
     "Happy Dutch on Vacation",
@@ -138,8 +140,7 @@ if selected==nav_list[3]:
     answer = st.radio(
      "What's the longest movie ?",
      list_movies)
-
-    if answer == list_movies[0]:
+    if answer == list_movies[1]:
      st.write('Congrats, you win a full version of Canadian Army Newsreel ! :rocket:')
     else:
      st.write("Wrong, you are rotten ! :no_entry_sign:")
@@ -164,7 +165,7 @@ if selected==nav_list[3]:
 
 if selected==nav_list[5]:
     st.markdown(f'# {nav_list[5]}')
-    
+
     fig_genre, ax_genre =plt.subplots()
     ax_genre = px.bar(top5_genres, x="Genres", y="Pop.Score")
     st.pyplot(fig_genre)
