@@ -3,8 +3,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import streamlit as st
 
-df_top10_number = pd.read_csv('./6ko_top10_number.csv')
-df_top10_minutes = pd.read_csv('./6ko_top10_minutes.csv')
+df_top10_number = pd.read_csv('./data/6ko_top10_number.csv')
+df_top10_minutes = pd.read_csv('./data/6ko_top10_minutes.csv')
 
 df_top10_number['Media number'] = round(df_top10_number['titleId']/1000000,2)
 df_top10_minutes['Total duration'] = round(df_top10_minutes['minutes']/60/24)
