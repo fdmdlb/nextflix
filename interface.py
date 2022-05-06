@@ -160,7 +160,7 @@ if selected==nav_list[4]:
     img2 = ["./data/redemption.jpg","./data/The_Dark_Knight.jpg","./data/inception_32.jpg","./data/fightCLUB.jpg","./data/PULPfiction.jpg"]
     for i in range(0,4):
         image_movie = Image.open(img2[i])
-        st.image(image_movie, width=400)
+        st.image(image_movie, width=200)
 
 if selected==nav_list[5]:
 
