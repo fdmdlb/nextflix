@@ -145,23 +145,18 @@ if selected==nav_list[3]:
 
     st.pyplot(fig1_j)
 
-# if selected==nav_list[5]:
+if selected==nav_list[5]:
     # ##joao part####
-    # st.markdown(f'# {nav_list[5]}')
-    # sn.set(rc = {'figure.figsize':(15,8)})
-    # sn.set_style("white")
+    st.markdown(f'# {nav_list[5]}')
+    sn.set(rc = {'figure.figsize':(15,8)})
+    sn.set_style("white")
 
-    # #st.dataframe(top5_movies)
+    st.dataframe(top5_movies)
 
-    # img2 = ["./data/redemption.png",
-            # "./data/The_Dark_Knight.png",
-            # "./data/inception_32.png",
-            # "./data/fightCLUB.png",
-            # "./data/PULPfiction.png"]
-
-    # for i in range(0,4):
-        # image_movie = Image.open(img2[i])
-        # st.image_movie(image_movie, width=400)
+    img2 = ["./data/redemption.png","./data/The_Dark_Knight.png","./data/inception_32.png","./data/fightCLUB.png","./data/PULPfiction.png"]
+    for i in range(0,4):
+        image_movie = Image.open(img2[i])
+        st.image_movie(image_movie, width=400)
 
 if selected==nav_list[5]:
 
