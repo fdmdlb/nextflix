@@ -133,17 +133,17 @@ if selected==nav_list[3]:
 
     st.markdown(f'# {nav_list[3]}')
     st.title('coming soon')
-    # sn.set(rc = {'figure.figsize':(15,8)})
-    # sn.set_style("white")
-    # fig1_j,ax_j1=plt.subplots()
+    sn.set(rc = {'figure.figsize':(15,8)})
+    sn.set_style("white")
+    fig1_j,ax_j1=plt.subplots()
 
-    # ax_j1= sn.lineplot(data=title_basic, x="startYear", y="minutes").set(xlabel="Year", ylabel="Minutes")
-    # plt.xlabel('Year', fontsize=20)
-    # plt.ylabel('Minutes', fontsize=20);
-    # #plt.title("Average length of movies/videos/tvmovies/short from 1874-2021", fontsize=25)
-    # plt.tick_params(axis='both', which='major', labelsize=15)
+    ax_j1= sn.lineplot(data=title_basic, x="startYear", y="minutes").set(xlabel="Year", ylabel="Minutes")
+    plt.xlabel('Year', fontsize=20)
+    plt.ylabel('Minutes', fontsize=20);
+    plt.title("Average length of movies/videos/tvmovies/short from 1874-2021", fontsize=25)
+    plt.tick_params(axis='both', which='major', labelsize=15)
 
-    # st.pyplot(fig1_j)
+    st.pyplot(fig1_j)
 
 # if selected==nav_list[5]:
     # ##joao part####
