@@ -112,6 +112,22 @@ if selected==nav_list[2]:
 
     st.pyplot(fig2_j)
     #st.download_button(label="download chart",data=title_basic_table)
+    
+    
+     list_movies = ["Canadian Army Newsreel",
+    "Flighing Mushrooms",
+    "Frogs on the plane",
+    "Happy Dutch on Vacation",
+    "Married with a codfish"]
+
+    answer = st.radio(
+     "What's the longest movie ?",
+     list_movies)
+
+    if answer == list_movies[0]:
+     st.write('Congrats, you win a full version of Canadian Army Newsreel ! :rocket:')
+    else:
+     st.write("Wrong, you are rotten ! :no_entry_sign:")
 
 if selected==nav_list[3]:
     #second visualization
