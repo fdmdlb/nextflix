@@ -36,7 +36,7 @@ nav_list = [
             "Top 5 popular movies and respective characteristics",
             "Top 5 Genres",
             "Top 10 translating countries",
-            "Recommandation system"
+            "Recommendation system"
             ]
 
 with st.sidebar:
@@ -48,7 +48,7 @@ with st.sidebar:
 if selected==nav_list[7]:
     st.markdown(f'# {nav_list[7]}')
     ########################################################################
-    # Recommandation system
+    # Recommendation system
     
     df_movies = pd.read_csv('./data/6ko_recommendation.csv')
 
