@@ -136,7 +136,7 @@ if selected==nav_list[3]:
     "Married with a codfish"]
 
     answer = st.radio(
-     "What's your favorite movie genre",
+     "What's the longest movie ?",
      list_movies)
 
     if answer == list_movies[0]:
