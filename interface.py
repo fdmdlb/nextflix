@@ -49,10 +49,6 @@ if selected==nav_list[6]:
     st.markdown(f'# {nav_list[6]}')
     cultural_interest.display_international()
 
-# if selected==nav_list[0]:
-#     st.markdown(f'# {nav_list[0]}')
-#     cultural_interest.display_international()
-
 if selected==nav_list[0]:
     st.markdown(f'# {nav_list[0]}')
     words_count.display_wordcloud()
@@ -144,9 +140,9 @@ if selected==nav_list[3]:
      list_movies)
 
     if answer == list_movies[0]:
-     st.write('You selected comedy.')
+     st.write('Congrats, you win a full version of Canadian Army Newsreel ! :rocket:')
     else:
-     st.write("You didn't select comedy.")
+     st.write("Wrong, you are rotten ! :no_entry_sign:")
 
 # if selected==nav_list[5]:
     # ##joao part####
