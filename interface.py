@@ -11,7 +11,7 @@ df_top10_number = pd.read_csv('./data/6ko_top10_number.csv')
 df_top10_minutes = pd.read_csv('./data/6ko_top10_minutes.csv')
 
 top5_movies = pd.read_csv('./data/joaoTop5MOVIES.csv')
-top5_genres=pd.read_csv('./data/joaoGGroupedtop5GENRES.csv')
+top5_genres=pd.read_csv('./data/top5_genres.csv')
 
 rating_movies_audience_publisher = pd.read_csv("./data/rating_movies_audience_publisher")
 publishers_selection_differences = pd.read_csv("./data/publishers_selection_differences", skiprows=2)
@@ -162,6 +162,9 @@ if selected==nav_list[3]:
         # image_movie = Image.open(img2[i])
         # st.image_movie(image_movie, width=400)
 
-if selected==nav_list[6]:
-    st.markdown(f'# {nav_list[6]}')
-    st.dataframe(top5_genres)
+if selected==nav_list[5]:
+    st.markdown(f'# {nav_list[5]}')
+    
+    fig_genre, ax_genre =plt.subplots()
+    ax_genre = px.bar(top5_genres, x="Genres", y="Pop.Score")
+    st.pyplot(fig_genre)
