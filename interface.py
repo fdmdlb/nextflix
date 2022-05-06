@@ -164,6 +164,7 @@ if selected==nav_list[4]:
         for i in range(0, 3):
             image_movie = Image.open(img2[i])
             st.image(image_movie, width=200)
+    with col2:
         for i in range(3,5):
             image_movie = Image.open(img2[i])
             st.image(image_movie, width=200)
