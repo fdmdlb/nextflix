@@ -127,7 +127,7 @@ if selected==nav_list[2]:
 
     if answer == list_movies[0]:
      st.write('......')
-    if answer == list_movies[1]:
+    elif answer == list_movies[1]:
      st.write('Congrats, you win a full version of Canadian Army Newsreel ! :rocket:')
     else:
      st.write("Wrong, you are rotten ! :no_entry_sign:")
