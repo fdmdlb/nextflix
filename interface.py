@@ -159,12 +159,12 @@ if selected==nav_list[4]:
 
     img2 = ["./data/redemption.jpg","./data/The_Dark_Knight.jpg","./data/inception_32.jpg","./data/fightCLUB.jpg","./data/PULPfiction.jpg"]
     
-    col1, col2 = st.columns(2)
-    with col1:
+    row1, row2 = st.rows(2)
+    with row1:
         for i in range(0, 3):
             image_movie = Image.open(img2[i])
             st.image(image_movie, width=200)
-    with col2:
+    with row2:
         for i in range(3,5):
             image_movie = Image.open(img2[i])
             st.image(image_movie, width=200)
