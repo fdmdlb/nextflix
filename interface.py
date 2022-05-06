@@ -158,10 +158,16 @@ if selected==nav_list[4]:
     st.dataframe(top5_movies)
 
     img2 = ["./data/redemption.jpg","./data/The_Dark_Knight.jpg","./data/inception_32.jpg","./data/fightCLUB.jpg","./data/PULPfiction.jpg"]
-    for i in range(0,5):
-        image_movie = Image.open(img2[i])
-        st.image(image_movie, width=200)
-
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        for i in range(0, 3):
+            image_movie = Image.open(img2[i])
+            st.image(image_movie, width=200)
+        for i in range(3,5):
+            image_movie = Image.open(img2[i])
+            st.image(image_movie, width=200)
+        
 if selected==nav_list[5]:
 
     st.markdown(f'# {nav_list[5]}')
