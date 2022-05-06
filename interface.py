@@ -44,6 +44,71 @@ if selected==nav_list[7]:
     st.markdown(f'# {nav_list[7]}')
     ########################################################################
     # Place for Recommandation system
+    
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.neighbors import NearestNeighbors
+    from unidecode import unidecode
+    from sklearn.preprocessing import MultiLabelBinarizer
+
+    df_movies = pd.read_csv('./data/6ko_recommendation.csv')
+
+    # all-titles-no-accents-lower-case
+    df_movies['simple_title'] = df_movies['movie_title'].apply(lambda title: unidecode(title).lower())
+
+    #splitting dates into y m d as int
+    df_movies['year'] = df_movies['original_release_date'].apply(lambda date: int(date[:4]))
+    df_movies['month'] = df_movies['original_release_date'].apply(lambda date: int(date[5:7]))
+    df_movies['day'] = df_movies['original_release_date'].apply(lambda date: int(date[8:10]))
+
+    # dummifying "content rating"
+    content_ratings = pd.get_dummies(df_movies['content_rating'])
+
+    # dummifying "genres"
+    df_movies['genres'] = df_movies['genres'].apply(lambda s: s.split(', '))
+    s = df_movies['genres']
+    mlb = MultiLabelBinarizer()
+    genres = pd.DataFrame(mlb.fit_transform(s),columns=mlb.classes_, index=df_movies.index)
+
+    # weight parameters for minkowski's distance
+    # 'runtime', 'audience_rating','audience_count', 'tomatometer_rating', 'tomatometer_count','year', 'month', 'day', 'genres'x21, 'content_ratings'x6
+    weights = [1, 10, 10, 5, 5, 1, 1, 1, 10, 10,10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 , 5, 5, 5, 5, 5, 5]
+
+
+    # defining X, and normalizing X, computing KNN
+    X = pd.concat([df_movies[['runtime', 'audience_rating','audience_count', 'tomatometer_rating', 'tomatometer_count','year', 'month', 'day']],genres,content_ratings],axis=1)
+    scaler = StandardScaler().fit(X)
+    X_scaled = scaler.transform(X)
+    distanceKNN = NearestNeighbors(n_neighbors=11, metric_params={'w': weights}).fit(X_scaled)
+
+    # menu to type key words
+    search = choice = ''
+    search = st.text_input('Please enter a few key words for a movie title: ')
+
+    if search !='':
+        search = unidecode(search).lower()
+        options = df_movies[df_movies['simple_title'].str.contains(search)]
+        df_choice = pd.DataFrame(range(1,len(options)+1), dtype='str', index=options.index, columns =['choice'])
+        options = pd.concat([options,df_choice],axis=1)
+
+        if len(options) > 1:
+            option = st.selectbox('Please confirm your choice', options['choice']+' - '+options['movie_title'])
+            key_id = options[options['choice'] == option[0:2].rstrip()].index[0]
+        
+        elif len(options) == 1:
+            key_id = options.index[0]
+        
+        if len(options) >= 1:
+            result = distanceKNN.kneighbors([X_scaled[key_id]])
+            result_list = list(result[1][0])
+            closests = result_list[1:]
+
+            st.write('suggestions for: ',df_movies['movie_title'].loc[key_id])
+            for suggestion in list(df_movies['movie_title'].loc[closests]):
+                st.write('* ',suggestion)
+            search = choice = ''
+        
+        else:
+            st.write('Sorry, I cannot find any match')
     ########################################################################
 
 if selected==nav_list[6]:
