@@ -41,6 +41,9 @@ with st.sidebar:
 
 if selected==nav_list[8]:
     st.markdown(f'# {nav_list[8]}')
+    ########################################################################
+    # Place for Recommandation system
+    ########################################################################
 
 if selected==nav_list[7]:
     st.markdown(f'# {nav_list[7]}')
