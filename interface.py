@@ -114,7 +114,7 @@ if selected==nav_list[2]:
     #st.download_button(label="download chart",data=title_basic_table)
 
     list_movies = [
-    "Please choose an answer."
+    "Please choose an answer",
     "Canadian Army Newsreel",
     "Flighing Mushrooms",
     "Frogs on the plane",
