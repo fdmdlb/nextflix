@@ -165,6 +165,7 @@ if selected==nav_list[3]:
         # st.image_movie(image_movie, width=400)
 
 if selected==nav_list[5]:
+
     st.markdown(f'# {nav_list[5]}')
 
     fig_genre = px.bar(top5_genres, x="Genres", y="Pop.Score")
