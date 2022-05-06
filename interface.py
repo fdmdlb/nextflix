@@ -26,7 +26,7 @@ publishers_selection_differences.columns = ["publiser_name","mean","std","count"
 title_basic_table = pd.read_csv('./data/joana_visualization1.csv')
 title_basic = pd.read_csv('./data/joana_visualization2.csv')
 
-st.title('NEXTFLIX')
+st.markdown('<H1 style="color:red;text-align:center;" >NEXTFLIX</H1>', unsafe_allow_html=True)
 
 nav_list = [
             "Words analyse",
