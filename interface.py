@@ -158,7 +158,7 @@ if selected==nav_list[4]:
     st.dataframe(top5_movies)
 
     img2 = ["./data/redemption.jpg","./data/The_Dark_Knight.jpg","./data/inception_32.jpg","./data/fightCLUB.jpg","./data/PULPfiction.jpg"]
-    for i in range(0,4):
+    for i in range(0,5):
         image_movie = Image.open(img2[i])
         st.image(image_movie, width=200)
 
