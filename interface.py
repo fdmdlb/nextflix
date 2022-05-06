@@ -7,6 +7,11 @@ import cultural_interest
 import words_count
 from PIL import Image
 import plotly.express as px
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import NearestNeighbors
+from unidecode import unidecode
+from sklearn.preprocessing import MultiLabelBinarizer
+
 
 df_top10_number = pd.read_csv('./data/6ko_top10_number.csv')
 df_top10_minutes = pd.read_csv('./data/6ko_top10_minutes.csv')
@@ -21,7 +26,7 @@ publishers_selection_differences.columns = ["publiser_name","mean","std","count"
 title_basic_table = pd.read_csv('./data/joana_visualization1.csv')
 title_basic = pd.read_csv('./data/joana_visualization2.csv')
 
-st.title('Recommandation movies')
+st.title('NEXTFLIX')
 
 nav_list = [
             "Words analyse",
@@ -43,13 +48,8 @@ with st.sidebar:
 if selected==nav_list[7]:
     st.markdown(f'# {nav_list[7]}')
     ########################################################################
-    # Place for Recommandation system
+    # Recommandation system
     
-    from sklearn.preprocessing import StandardScaler
-    from sklearn.neighbors import NearestNeighbors
-    from unidecode import unidecode
-    from sklearn.preprocessing import MultiLabelBinarizer
-
     df_movies = pd.read_csv('./data/6ko_recommendation.csv')
 
     # all-titles-no-accents-lower-case
