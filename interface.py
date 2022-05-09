@@ -49,7 +49,7 @@ if selected==nav_list[7]:
     st.markdown(f'# {nav_list[7]}')
     ########################################################################
     # Recommendation system
-    
+
     df_movies = pd.read_csv('./data/6ko_recommendation.csv')
 
     # all-titles-no-accents-lower-case
@@ -93,10 +93,10 @@ if selected==nav_list[7]:
         if len(options) > 1:
             option = st.selectbox('Please confirm your choice', options['choice']+' - '+options['movie_title'])
             key_id = options[options['choice'] == option[0:2].rstrip()].index[0]
-        
+
         elif len(options) == 1:
             key_id = options.index[0]
-        
+
         if len(options) >= 1:
             result = distanceKNN.kneighbors([X_scaled[key_id]])
             result_list = list(result[1][0])
@@ -106,7 +106,7 @@ if selected==nav_list[7]:
             for suggestion in list(df_movies['movie_title'].loc[closests]):
                 st.write('* ',suggestion)
             search = choice = ''
-        
+
         else:
             st.write('Sorry, I cannot find any match')
     ########################################################################
@@ -195,7 +195,7 @@ if selected==nav_list[2]:
     elif answer == list_movies[1]:
      st.write('Congrats, you win a full version of Canadian Army Newsreel ! :rocket:')
     else:
-     st.write("Wrong, you are rotten ! :no_entry_sign:")
+     st.write("Wrong answer ! :no_entry_sign:")
 
 if selected==nav_list[3]:
     #second visualization
@@ -223,7 +223,7 @@ if selected==nav_list[4]:
     st.dataframe(top5_movies)
 
     img2 = ["./data/redemption.jpg","./data/The_Dark_Knight.jpg","./data/inception_32.jpg","./data/fightCLUB.jpg","./data/PULPfiction.jpg"]
-    
+
     row1, row2 = st.rows(2)
     with row1:
         for i in range(0, 3):
@@ -233,7 +233,7 @@ if selected==nav_list[4]:
         for i in range(3,5):
             image_movie = Image.open(img2[i])
             st.image(image_movie, width=200)
-        
+
 if selected==nav_list[5]:
 
     st.markdown(f'# {nav_list[5]}')
