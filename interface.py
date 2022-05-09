@@ -144,16 +144,13 @@ if selected==nav_list[1]:
     "./img/diva.png"]
 
     col1, col2 = st.columns(2)
-    with col1:
-        for i in range(0, 2):
-            st.write(f"#{i+1} {top_5_reviews.index[i]} ({str(round(top_5_reviews['audience_rating'].values[i], 2))})")
+
+    for i in range(0, 5):
+        with col1:
             image = Image.open(img[i])
             st.image(image, width=300)
-    with col2:
-        for i in range(2, 5):
+        with col2:
             st.write(f"#{i+1} {top_5_reviews.index[i]} ({str(round(top_5_reviews['audience_rating'].values[i], 2))})")
-            image = Image.open(img[i])
-            st.image(image, width=300)
 
 if selected==nav_list[2]:
     #####JOANA PART########################
