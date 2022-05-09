@@ -231,6 +231,8 @@ if selected==nav_list[1]:
             title=top5_movies['Title'].values[i]
             genre = top5_movies["Genres"].values[i]
             rating=top5_movies["Avg. Rating"].values[i]
+            votes=top5_movies["Num.Votes"].values[i]
+            popularity=round((top5_movies["Popularity"].values[i])/1000000,3)
             #st.write(title)
             #st.write(genre)
             #st.write(rating)
