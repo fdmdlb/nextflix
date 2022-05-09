@@ -234,7 +234,7 @@ if selected==nav_list[1]:
             #st.write(genre)
             #st.write(rating)
             with st.expander("See explanation"):
-                st.write(title,genre,rating)
+                st.write("Tile:",title, "Genre: ", genre, "Rating: ",rating)
             
 if selected==nav_list[2]:
 
