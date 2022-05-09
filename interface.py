@@ -83,7 +83,7 @@ if selected==nav_list[7]:
 
     # menu to type key words
     search = choice = ''
-    search = st.text_input('Please enter a few key words for a movie title: ')
+    search = st.text_input('Please enter a movie title you liked: ')
 
     if search !='':
         search = unidecode(search).lower()
@@ -103,9 +103,10 @@ if selected==nav_list[7]:
             result_list = list(result[1][0])
             closests = result_list[1:]
 
-            st.write('suggestions for: ',df_movies['movie_title'].loc[key_id])
-            for suggestion in list(df_movies['movie_title'].loc[closests]):
-                st.write('* ',suggestion)
+            st.write('Here are our suggestions matching ',df_movies['movie_title'].loc[key_id])
+            df_display = df_movies[['movie_title','audience_rating','tomatometer_rating']].loc[closests].copy()
+            st.write('Suggestion title (Audience Rating | TomatoMeter)')
+            df_display.apply(lambda row: st.write('* ', row[0], '(', str(int(row[1])), '|', str(int(row[2])), ')'),axis=1)
             search = choice = ''
 
         else:
@@ -198,7 +199,7 @@ if selected==nav_list[4]:
     #second visualization
 
     st.markdown(f'# {nav_list[4]}')
-    st.title('coming soon')
+    #st.title('coming soon')
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
     fig1_j,ax_j1=plt.subplots()
@@ -217,20 +218,32 @@ if selected==nav_list[1]:
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
 
-    st.dataframe(top5_movies)
+    #st.dataframe(top5_movies)
 
     img2 = ["./data/redemption.jpg","./data/The_Dark_Knight.jpg","./data/inception_32.jpg","./data/fightCLUB.jpg","./data/PULPfiction.jpg"]
-
-    row1, row2 = st.rows(2)
-    with row1:
-        for i in range(0, 3):
+    
+    
+    for i in range(0,5):
+        col1, col2 = st.columns(2)
+        with col1:
             image_movie = Image.open(img2[i])
             st.image(image_movie, width=200)
-    with row2:
-        for i in range(3,5):
-            image_movie = Image.open(img2[i])
-            st.image(image_movie, width=200)
-
+        with col2:
+            title=top5_movies['Title'].values[i]
+            genre = top5_movies["Genres"].values[i]
+            rating=top5_movies["Avg. Rating"].values[i]
+            votes=top5_movies["Num.Votes"].values[i]
+            popularity=round((top5_movies["Popularity"].values[i])/1000000,3)
+            #st.write(title)
+            #st.write(genre)
+            #st.write(rating)
+            with st.expander("Want to know more? Click!"):
+                st.write("Title:",title)
+                st.write("Genre: ", genre) 
+                st.write("Rating: ",rating)
+                st.write("Number of Votes: ",votes)
+                st.write("Popularity Score: ", popularity)
+            
 if selected==nav_list[2]:
 
     st.markdown(f'# {nav_list[2]}')
