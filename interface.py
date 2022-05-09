@@ -36,7 +36,8 @@ nav_list = [
             "Average Media Length Evolution",
             "Top 10 Translating Countries",
             "Words Analyse",
-            "Recommendation System"
+            "Recommendation System",
+            "About us"
             ]
 
 with st.sidebar:
@@ -236,3 +237,42 @@ if selected==nav_list[2]:
 
     fig_genre = px.bar(top5_genres, x="Genres", y="Pop.Score")
     st.plotly_chart(fig_genre)
+
+if selected==nav_list[8]:
+    st.markdown(f'# {nav_list[8]}')
+    us = [
+    {"name":"Fabien Martinez",
+     "img": "https://media-exp1.licdn.com/dms/image/C5603AQHJnh0UtSOiog/profile-displayphoto-shrink_200_200/0/1517442681233?e=1657756800&v=beta&t=LyfuwkU19EGf5Hyp5akMGx_rzIqGzo8bH1VreVcKq0k",
+    "linkedin":"https://www.linkedin.com/in/fabien-martinez-a30561109/"},
+    {"name":"François de la Bretèche",
+    "img": "https://media-exp1.licdn.com/dms/image/C4D03AQG9QwJ6igbmKA/profile-displayphoto-shrink_800_800/0/1584797342559?e=1657756800&v=beta&t=hiwVl_fchl2uEhZph6uheK_59vq5QRJixzqiGkKTvoo",
+    "linkedin":"https://www.linkedin.com/in/f-delabreteche/"},
+    {"name":"João Almeida",
+    "img": "",
+    "linkedin":"https://github.com/The-Ineffable-Alias"},
+    {"name":"Joana Alves",
+    "img": "https://media-exp1.licdn.com/dms/image/D4E35AQH7_pdcW2C_fg/profile-framedphoto-shrink_800_800/0/1650537148020?e=1652187600&v=beta&t=ys0NYtLsU-ePa9Qx4OwuvVn6k6QNmFTd3jxxm0H-8Ec",
+    "linkedin":"https://www.linkedin.com/in/joana-pires-coelho/"
+    }
+    ]
+
+    st.markdown(
+    "<style>.us-card{text-align:center; margin:.8rem 0}.us-card p{margin:.3rem 0}.us-card img{border-radius:50%;width:200px;height:200px;}</style>",
+    unsafe_allow_html=True
+    )
+
+    for index in range(0,4,2):
+        col1, col2 = st.columns(2)
+        with col1:
+            one = us[index]
+            st.markdown(
+            f'<div class="us-card"><img src="{one["img"]}"><p>{one["name"]}</p><a href="{one["linkedin"]}">linkedin</a>',
+            unsafe_allow_html=True
+            )
+        with col2:
+            one = us[index+1]
+            st.markdown(
+            f'<div class="us-card"><img src="{one["img"]}"><p>{one["name"]}</p><a href="{one["linkedin"]}">linkedin</a>',
+            #f'<div style="text-align:center"><img src="{one["img"]}" width="200" height:"200"><p>{one["name"]}</p><a href="{one["linkedin"]}">linkedin</a>',
+            unsafe_allow_html=True
+            )
