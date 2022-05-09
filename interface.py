@@ -121,8 +121,8 @@ if selected==nav_list[6]:
     st.markdown(f'# {nav_list[6]}')
     words_count.display_wordcloud()
 
-if selected==nav_list[0]:
-    st.markdown(f'# {nav_list[0]}')
+if selected==nav_list[5]:
+    st.markdown(f'# {nav_list[5]}')
 
     # Import files for the analyse
     publishers_list = list(publishers_selection_differences.sort_values(['mean','std'], ascending=[0,1]).head(10)["publiser_name"])
