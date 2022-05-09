@@ -30,7 +30,7 @@ st.markdown('<H1 style="color:red;text-align:center;" >NEXTFLIX</H1>', unsafe_al
 
 nav_list = [
             "Top 5 Reviews sharing Audience Opinion",
-            "Top 5 popular Movies",
+            "Top 5 Movies",
             "Top 5 Genres",
             "Individual Media Length Evolution ",
             "Average Media Length Evolution",
