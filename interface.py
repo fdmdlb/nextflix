@@ -33,8 +33,8 @@ nav_list = [
              "Top 5 Movies",
             "Individual Media Length Evolution ",
             "Average Media Length Evolution",
-         "Top 5 Reviews sharing Audience Opinion",
             "Top 10 Translating Countries",
+    "Top 5 Reviews sharing Audience Opinion",
             "Words Analyse",
             "Recommendation System",
             "About us"
@@ -113,16 +113,16 @@ if selected==nav_list[7]:
             st.write('Sorry, I cannot find any match')
     ########################################################################
 
-if selected==nav_list[5]:
-    st.markdown(f'# {nav_list[5]}')
+if selected==nav_list[4]:
+    st.markdown(f'# {nav_list[4]}')
     cultural_interest.display_international()
 
 if selected==nav_list[6]:
     st.markdown(f'# {nav_list[6]}')
     words_count.display_wordcloud()
 
-if selected==nav_list[4]:
-    st.markdown(f'# {nav_list[4]}')
+if selected==nav_list[5]:
+    st.markdown(f'# {nav_list[5]}')
 
     # Import files for the analyse
     publishers_list = list(publishers_selection_differences.sort_values(['mean','std'], ascending=[0,1]).head(10)["publiser_name"])
