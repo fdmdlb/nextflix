@@ -28,6 +28,9 @@ title_basic = pd.read_csv('./data/joana_visualization2.csv')
 
 st.markdown('<H1 style="color:red;text-align:center;" >NEXTFLIX</H1>', unsafe_allow_html=True)
 
+st.markdown('<style>.row-widget.stButton{display: flex;justify-content: center;}</style>', unsafe_allow_html=True)
+
+
 nav_list = [
             "Top 5 Genres",
              "Top 5 Movies",
