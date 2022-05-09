@@ -273,19 +273,12 @@ if selected==nav_list[8]:
     "<style>.us-card{text-align:center; margin:.8rem 0}.us-card p{margin:.3rem 0}.us-card img{-webkit-filter: grayscale(100%);filter: grayscale(100%);border-radius:50%;width:190px;height:190px;padding:1rem;}</style>",
     unsafe_allow_html=True
     )
-
-    for index in range(0,4,2):
-        col1, col2 = st.columns(2)
-        with col1:
+    col1, col2, col3, col4 = st.columns(4)
+    cols = [col1, col2, col3, col4]
+    for index in range(0,4):
+        with cols[index]:
             one = us[index]
             st.markdown(
             f'<div class="us-card"><img src="{one["img"]}"><p>{one["name"]}</p><a href="{one["linkedin"]}">linkedin</a>',
-            unsafe_allow_html=True
-            )
-        with col2:
-            one = us[index+1]
-            st.markdown(
-            f'<div class="us-card"><img src="{one["img"]}"><p>{one["name"]}</p><a href="{one["linkedin"]}">linkedin</a>',
-            #f'<div style="text-align:center"><img src="{one["img"]}" width="200" height:"200"><p>{one["name"]}</p><a href="{one["linkedin"]}">linkedin</a>',
             unsafe_allow_html=True
             )
