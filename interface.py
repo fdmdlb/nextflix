@@ -270,7 +270,7 @@ if selected==nav_list[8]:
     ]
 
     st.markdown(
-    "<style>.us-card{text-align:center; margin:.8rem 0}.us-card p{margin:.3rem 0}.us-card img{-webkit-filter: grayscale(100%);filter: grayscale(100%);border-radius:50%;width:190px;height:190px;padding:1rem;}</style>",
+    "<style>.us-card{text-align:center; margin:.8rem 0}.us-card p{margin:.3rem 0}.us-card img{-webkit-filter: grayscale(100%);filter: grayscale(100%);border-radius:50%;width:150px;height:150px;padding:1rem;}</style>",
     unsafe_allow_html=True
     )
     col1, col2, col3, col4 = st.columns(4)
