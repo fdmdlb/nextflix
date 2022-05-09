@@ -248,7 +248,9 @@ if selected==nav_list[0]:
 
     st.markdown(f'# {nav_list[0]}')
     sn.set_style("white")
-    fig_genre = px.bar(top5_genres, x="Genres", y="Pop.Score").update_xaxes(showgrid=False)
+    fig_genre = px.bar(top5_genres, x="Genres", y="Pop.Score")
+    fig_genre.update_xaxes(showgrid=False)
+    fig_genre.update_yaxes(showgrid=False)
     st.plotly_chart(fig_genre)
 
 if selected==nav_list[8]:
