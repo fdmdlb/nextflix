@@ -217,7 +217,7 @@ if selected==nav_list[1]:
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
 
-    st.dataframe(top5_movies)
+    #st.dataframe(top5_movies)
 
     img2 = ["./data/redemption.jpg","./data/The_Dark_Knight.jpg","./data/inception_32.jpg","./data/fightCLUB.jpg","./data/PULPfiction.jpg"]
     
