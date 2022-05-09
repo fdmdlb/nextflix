@@ -82,7 +82,7 @@ if selected==nav_list[7]:
 
     # menu to type key words
     search = choice = ''
-    search = st.text_input('Please enter a few key words for a movie title: ')
+    search = st.text_input('Please enter a movie title you liked: ')
 
     if search !='':
         search = unidecode(search).lower()
@@ -102,9 +102,10 @@ if selected==nav_list[7]:
             result_list = list(result[1][0])
             closests = result_list[1:]
 
-            st.write('suggestions for: ',df_movies['movie_title'].loc[key_id])
-            for suggestion in list(df_movies['movie_title'].loc[closests]):
-                st.write('* ',suggestion)
+            st.write('Here are our suggestions matching ',df_movies['movie_title'].loc[key_id])
+            df_display = df_movies[['movie_title','audience_rating','tomatometer_rating']].loc[closests].copy()
+            st.write('Suggestion title (Audience Rating | TomatoMeter)')
+            df_display.apply(lambda row: st.write('* ', row[0], '(', str(int(row[1])), '|', str(int(row[2])), ')'),axis=1)
             search = choice = ''
 
         else:
