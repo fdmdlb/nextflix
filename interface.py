@@ -254,7 +254,7 @@ if selected==nav_list[0]:
     fig_genre = px.bar(top5_genres, x="Genres", y="Pop.Score")
     fig_genre.update_xaxes(showgrid=False)
     fig_genre.update_yaxes(showgrid=False)
-    fig_genre.update_layout(plot_bgcolor="fff" )
+    fig_genre.update_layout(plot_bgcolor="#fff" )
     st.plotly_chart(fig_genre)
 
 if selected==us_title:
