@@ -221,8 +221,9 @@ if selected==nav_list[1]:
 
     img2 = ["./data/redemption.jpg","./data/The_Dark_Knight.jpg","./data/inception_32.jpg","./data/fightCLUB.jpg","./data/PULPfiction.jpg"]
     
-    col1, col2 = st.columns(2)
+    
     for i in range(0,5):
+        col1, col2 = st.columns(2)
         with col1:
             image_movie = Image.open(img2[i])
             st.image(image_movie, width=200)
@@ -234,7 +235,7 @@ if selected==nav_list[1]:
             #st.write(genre)
             #st.write(rating)
             with st.expander("See explanation"):
-                st.write("Tile:",title,"\n", "Genre: ", genre, "Rating: ",rating)
+                st.write("Tile:",title,"\n", "Genre: ", genre, "\n", "Rating: ",rating)
             
 if selected==nav_list[2]:
 
