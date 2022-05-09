@@ -29,13 +29,13 @@ title_basic = pd.read_csv('./data/joana_visualization2.csv')
 st.markdown('<H1 style="color:red;text-align:center;" >NEXTFLIX</H1>', unsafe_allow_html=True)
 
 nav_list = [
-            "Words analyse",
             "Top 5 reviews sharing the audience opinion",
-            "Individual length evolution in minutes from 1874-2021",
-            "Average movie* length evolution from 1874-2021",
             "Top 5 popular movies and respective characteristics",
             "Top 5 Genres",
+            "Individual length evolution in minutes from 1874-2021",
+            "Average movie* length evolution from 1874-2021",
             "Top 10 translating countries",
+            "Words analyse",
             "Recommendation system"
             ]
 
@@ -111,16 +111,16 @@ if selected==nav_list[7]:
             st.write('Sorry, I cannot find any match')
     ########################################################################
 
+if selected==nav_list[5]:
+    st.markdown(f'# {nav_list[5]}')
+    cultural_interest.display_international()
+
 if selected==nav_list[6]:
     st.markdown(f'# {nav_list[6]}')
-    cultural_interest.display_international()
+    words_count.display_wordcloud()
 
 if selected==nav_list[0]:
     st.markdown(f'# {nav_list[0]}')
-    words_count.display_wordcloud()
-
-if selected==nav_list[1]:
-    st.markdown(f'# {nav_list[1]}')
 
     # Import files for the analyse
     publishers_list = list(publishers_selection_differences.sort_values(['mean','std'], ascending=[0,1]).head(10)["publiser_name"])
@@ -155,11 +155,11 @@ if selected==nav_list[1]:
             image = Image.open(img[i])
             st.image(image, width=300)
 
-if selected==nav_list[2]:
+if selected==nav_list[3]:
     #####JOANA PART########################
     #first visualization
 
-    st.markdown(f'# {nav_list[2]}')
+    st.markdown(f'# {nav_list[3]}')
 
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
@@ -197,10 +197,10 @@ if selected==nav_list[2]:
     else:
      st.write("Wrong answer ! :no_entry_sign:")
 
-if selected==nav_list[3]:
+if selected==nav_list[4]:
     #second visualization
 
-    st.markdown(f'# {nav_list[3]}')
+    st.markdown(f'# {nav_list[4]}')
     st.title('coming soon')
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
@@ -209,14 +209,14 @@ if selected==nav_list[3]:
     ax_j1= sn.lineplot(data=title_basic, x="startYear", y="minutes").set(xlabel="Year", ylabel="Minutes")
     plt.xlabel('Year', fontsize=20)
     plt.ylabel('Minutes', fontsize=20);
-    plt.title("Average length of movies/videos/tvmovies/short from 1874-2021", fontsize=25)
+    #plt.title("Average length of movies/videos/tvmovies/short from 1874-2021", fontsize=25)
     plt.tick_params(axis='both', which='major', labelsize=15)
 
     st.pyplot(fig1_j)
 
-if selected==nav_list[4]:
+if selected==nav_list[1]:
     # ##joao part####
-    st.markdown(f'# {nav_list[5]}')
+    st.markdown(f'# {nav_list[1]}')
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
 
@@ -234,9 +234,9 @@ if selected==nav_list[4]:
             image_movie = Image.open(img2[i])
             st.image(image_movie, width=200)
 
-if selected==nav_list[5]:
+if selected==nav_list[2]:
 
-    st.markdown(f'# {nav_list[5]}')
+    st.markdown(f'# {nav_list[2]}')
 
     fig_genre = px.bar(top5_genres, x="Genres", y="Pop.Score")
     st.plotly_chart(fig_genre)
