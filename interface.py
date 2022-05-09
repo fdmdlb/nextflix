@@ -227,9 +227,9 @@ if selected==nav_list[1]:
             image_movie = Image.open(img2[i])
             st.image(image_movie, width=200)
         with col2:
-            title=movie['Title'].values[i]
-            genre = movie["Genres"].values[i]
-            rating=movie["Avg. Rating"].values[i]
+            title=top5_movies['Title'].values[i]
+            genre = top5_movies["Genres"].values[i]
+            rating=top5_movies["Avg. Rating"].values[i]
             st.write(title,genre,rating)
             
 if selected==nav_list[2]:
