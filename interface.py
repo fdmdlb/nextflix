@@ -221,8 +221,8 @@ if selected==nav_list[1]:
     #st.dataframe(top5_movies)
 
     img2 = ["./data/redemption.jpg","./data/The_Dark_Knight.jpg","./data/inception_32.jpg","./data/fightCLUB.jpg","./data/PULPfiction.jpg"]
-    
-    
+
+
     for i in range(0,5):
         col1, col2 = st.columns(2)
         with col1:
@@ -239,11 +239,11 @@ if selected==nav_list[1]:
             #st.write(rating)
             with st.expander("Want to know more? Click!"):
                 st.write("Title:",title)
-                st.write("Genre: ", genre) 
+                st.write("Genre: ", genre)
                 st.write("Rating: ",rating)
                 st.write("Number of Votes: ",votes)
                 st.write("Popularity Score: ", popularity)
-            
+
 if selected==nav_list[2]:
 
     st.markdown(f'# {nav_list[2]}')
@@ -264,13 +264,13 @@ if selected==nav_list[8]:
     "img": "",
     "linkedin":"https://github.com/The-Ineffable-Alias"},
     {"name":"Joana Alves",
-    "img": "https://media-exp1.licdn.com/dms/image/D4E35AQH7_pdcW2C_fg/profile-framedphoto-shrink_800_800/0/1650537148020?e=1652187600&v=beta&t=ys0NYtLsU-ePa9Qx4OwuvVn6k6QNmFTd3jxxm0H-8Ec",
+    "img": "https://media-exp1.licdn.com/dms/image/C4D03AQFhUPgrR5wVUg/profile-displayphoto-shrink_800_800/0/1558610964713?e=1657756800&v=beta&t=zYzStxavELhinCITmuVNygzu3nH00jP3LLFKmv6hVkM",
     "linkedin":"https://www.linkedin.com/in/joana-pires-coelho/"
     }
     ]
 
     st.markdown(
-    "<style>.us-card{text-align:center; margin:.8rem 0}.us-card p{margin:.3rem 0}.us-card img{border-radius:50%;width:200px;height:200px;}</style>",
+    "<style>.us-card{text-align:center; margin:.8rem 0}.us-card p{margin:.3rem 0}.us-card img{border-radius:50%;width:150px;height:150px;padding:1rem;}</style>",
     unsafe_allow_html=True
     )
 
