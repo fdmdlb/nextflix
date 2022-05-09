@@ -240,6 +240,8 @@ if selected==nav_list[1]:
                 st.write("Tile:",title)
                 st.write("Genre: ", genre) 
                 st.write("Rating: ",rating)
+                st.write("Number of Votes: ",votes)
+                st.write("Popularity Score: ", popularity)
             
 if selected==nav_list[2]:
 
