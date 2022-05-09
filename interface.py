@@ -34,17 +34,20 @@ nav_list = [
             "Individual Media Length Evolution ",
             "Average Media Length Evolution",
             "Top 10 Translating Countries",
-    "Top 5 Reviews sharing Audience Opinion",
+            "Top 5 Reviews sharing Audience Opinion",
             "Words Analyse",
-            "Recommendation System",
-            "About us"
+            "Recommendation System"
+            #"About us"
             ]
+
+us_title = "About us"
 
 with st.sidebar:
     selected = st.selectbox(
          'Select a genre',
          options=nav_list)
-
+    if st.button(us_title):
+        selected = us_title
 
 if selected==nav_list[7]:
     st.markdown(f'# {nav_list[7]}')
@@ -251,8 +254,8 @@ if selected==nav_list[0]:
     fig_genre = px.bar(top5_genres, x="Genres", y="Pop.Score")
     st.plotly_chart(fig_genre)
 
-if selected==nav_list[8]:
-    st.markdown(f'# {nav_list[8]}')
+if selected==us_title:
+    st.markdown(f'# {us_title}')
     us = [
     {"name":"Fabien Martinez",
      "img": "https://media-exp1.licdn.com/dms/image/C5603AQHJnh0UtSOiog/profile-displayphoto-shrink_200_200/0/1517442681233?e=1657756800&v=beta&t=LyfuwkU19EGf5Hyp5akMGx_rzIqGzo8bH1VreVcKq0k",
