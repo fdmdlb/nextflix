@@ -23,7 +23,7 @@ def display_wordcloud():
     list_rotten = word_freq[(word_freq.freq_total > 0.4)].sort_values(["rel_rot"], ascending=[0]).head(10)["word"].values
     list_words = np.append(list_rotten, list_fresh)
     #word_freq
-    fig = px.bar(word_freq[word_freq["word"].isin(list_words)].sort_values("General"), x='word', y=["Fresh", "Rotten"], title="Rotten vs Fresh movies", barmode="group")
+    fig = px.bar(word_freq[word_freq["word"].isin(list_words)].sort_values("General"), x='word', y=["Fresh", "Rotten"], barmode="group")
     st.plotly_chart(fig)
 
     col1, col2 = st.columns(2)

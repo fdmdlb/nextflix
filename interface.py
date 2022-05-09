@@ -260,32 +260,25 @@ if selected==nav_list[8]:
     {"name":"François de la Bretèche",
     "img": "https://media-exp1.licdn.com/dms/image/C4D03AQG9QwJ6igbmKA/profile-displayphoto-shrink_800_800/0/1584797342559?e=1657756800&v=beta&t=hiwVl_fchl2uEhZph6uheK_59vq5QRJixzqiGkKTvoo",
     "linkedin":"https://www.linkedin.com/in/f-delabreteche/"},
-    {"name":"João Almeida",
-    "img": "",
-    "linkedin":"https://github.com/The-Ineffable-Alias"},
     {"name":"Joana Alves",
     "img": "https://media-exp1.licdn.com/dms/image/C4D03AQFhUPgrR5wVUg/profile-displayphoto-shrink_800_800/0/1558610964713?e=1657756800&v=beta&t=zYzStxavELhinCITmuVNygzu3nH00jP3LLFKmv6hVkM",
     "linkedin":"https://www.linkedin.com/in/joana-pires-coelho/"
-    }
+    },
+    {"name":"João Almeida",
+    "img": "",
+    "linkedin":"https://github.com/The-Ineffable-Alias"}
     ]
 
     st.markdown(
-    "<style>.us-card{text-align:center; margin:.8rem 0}.us-card p{margin:.3rem 0}.us-card img{-webkit-filter: grayscale(100%);filter: grayscale(100%);border-radius:50%;width:190px;height:190px;padding:1rem;}</style>",
+    "<style>.us-card{text-align:center; margin:.8rem 0}.us-card p{margin:.3rem 0}.us-card img{-webkit-filter: grayscale(100%);filter: grayscale(100%);border-radius:50%;width:150px;height:150px;padding:1rem;}</style>",
     unsafe_allow_html=True
     )
-
-    for index in range(0,4,2):
-        col1, col2 = st.columns(2)
-        with col1:
+    col1, col2, col3, col4 = st.columns(4)
+    cols = [col1, col2, col3, col4]
+    for index in range(0,4):
+        with cols[index]:
             one = us[index]
             st.markdown(
             f'<div class="us-card"><img src="{one["img"]}"><p>{one["name"]}</p><a href="{one["linkedin"]}">linkedin</a>',
-            unsafe_allow_html=True
-            )
-        with col2:
-            one = us[index+1]
-            st.markdown(
-            f'<div class="us-card"><img src="{one["img"]}"><p>{one["name"]}</p><a href="{one["linkedin"]}">linkedin</a>',
-            #f'<div style="text-align:center"><img src="{one["img"]}" width="200" height:"200"><p>{one["name"]}</p><a href="{one["linkedin"]}">linkedin</a>',
             unsafe_allow_html=True
             )
