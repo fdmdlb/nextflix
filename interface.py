@@ -198,7 +198,7 @@ if selected==nav_list[4]:
     #second visualization
 
     st.markdown(f'# {nav_list[4]}')
-    st.title('coming soon')
+    #st.title('coming soon')
     sn.set(rc = {'figure.figsize':(15,8)})
     sn.set_style("white")
     fig1_j,ax_j1=plt.subplots()
