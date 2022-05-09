@@ -78,7 +78,7 @@ if selected==nav_list[7]:
 
     # weight parameters for minkowski's distance
     # 'runtime', 'audience_rating','audience_count', 'tomatometer_rating', 'tomatometer_count','year', 'month', 'day', 'genres'x21, 'content_ratings'x6
-    weights = [1, 10, 10, 5, 5, 1, 1, 1, 10, 10,10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 , 5, 5, 5, 5, 5, 5]
+    weights = [1, 10, 10, 5, 5, 1, 1, 1, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 5, 5, 5, 5, 5, 5]
 
 
     # defining X, and normalizing X, computing KNN
@@ -111,8 +111,12 @@ if selected==nav_list[7]:
 
             st.write('Here are our suggestions matching ',df_movies['movie_title'].loc[key_id])
             df_display = df_movies[['movie_title','audience_rating','tomatometer_rating']].loc[closests].copy()
-            st.write('Suggestion title (Audience Rating | TomatoMeter)')
-            df_display.apply(lambda row: st.write('* ', row[0], '(', str(int(row[1])), '|', str(int(row[2])), ')'),axis=1)
+            
+            table_content = ''
+            for row in range(len(df_display)):
+                table_content += '<tr><td>' + df_display['movie_title'].iloc[row] + '</td><td align=center>' + str(int(df_display['audience_rating'].iloc[row])) + '</td><td align=center>' + str(int(df_display['tomatometer_rating'].iloc[row])) + '</td></tr>'
+            
+            st.markdown('<table><tr><th>Movie Title</th><th>Public Ratings</th><th>TomatoMeter</th></tr>' + table_content + '</table>', unsafe_allow_html=True)
             search = choice = ''
 
         else:
