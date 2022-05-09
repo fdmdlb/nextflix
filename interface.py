@@ -230,7 +230,11 @@ if selected==nav_list[1]:
             title=top5_movies['Title'].values[i]
             genre = top5_movies["Genres"].values[i]
             rating=top5_movies["Avg. Rating"].values[i]
-            st.write(title,genre,rating)
+            #st.write(title)
+            #st.write(genre)
+            #st.write(rating)
+            with st.expander("See explanation"):
+                st.write(title,genre,rating)
             
 if selected==nav_list[2]:
 
