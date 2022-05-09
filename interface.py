@@ -29,14 +29,14 @@ title_basic = pd.read_csv('./data/joana_visualization2.csv')
 st.markdown('<H1 style="color:red;text-align:center;" >NEXTFLIX</H1>', unsafe_allow_html=True)
 
 nav_list = [
-            "Top 5 reviews sharing the audience opinion",
-            "Top 5 popular movies and respective characteristics",
+            "Top 5 Reviews sharing Audience Opinion",
+            "Top 5 popular Movies",
             "Top 5 Genres",
-            "Individual length evolution in minutes from 1874-2021",
-            "Average movie* length evolution from 1874-2021",
-            "Top 10 translating countries",
-            "Words analyse",
-            "Recommendation system"
+            "Individual Media Length Evolution ",
+            "Average Media Length Evolution",
+            "Top 10 Translating Countries",
+            "Words Analyse",
+            "Recommendation System"
             ]
 
 with st.sidebar:
