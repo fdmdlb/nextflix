@@ -260,13 +260,13 @@ if selected==nav_list[8]:
     {"name":"François de la Bretèche",
     "img": "https://media-exp1.licdn.com/dms/image/C4D03AQG9QwJ6igbmKA/profile-displayphoto-shrink_800_800/0/1584797342559?e=1657756800&v=beta&t=hiwVl_fchl2uEhZph6uheK_59vq5QRJixzqiGkKTvoo",
     "linkedin":"https://www.linkedin.com/in/f-delabreteche/"},
-    {"name":"João Almeida",
-    "img": "",
-    "linkedin":"https://github.com/The-Ineffable-Alias"},
     {"name":"Joana Alves",
     "img": "https://media-exp1.licdn.com/dms/image/C4D03AQFhUPgrR5wVUg/profile-displayphoto-shrink_800_800/0/1558610964713?e=1657756800&v=beta&t=zYzStxavELhinCITmuVNygzu3nH00jP3LLFKmv6hVkM",
     "linkedin":"https://www.linkedin.com/in/joana-pires-coelho/"
-    }
+    },
+    {"name":"João Almeida",
+    "img": "",
+    "linkedin":"https://github.com/The-Ineffable-Alias"}
     ]
 
     st.markdown(
