@@ -89,7 +89,7 @@ if selected==nav_list[7]:
 
     # menu to type key words
     search = choice = ''
-    search = st.text_input('Please enter a movie title you liked: ')
+    search = st.text_input('Please enter a movie title you like: ')
 
     if search !='':
         search = unidecode(search).lower()
