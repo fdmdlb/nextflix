@@ -47,7 +47,7 @@ us_title = "About us"
 
 with st.sidebar:
     selected = st.selectbox(
-         'Select a genre',
+         '',
          options=nav_list)
     if st.button(us_title):
         selected = us_title
