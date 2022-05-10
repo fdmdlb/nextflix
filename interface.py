@@ -278,7 +278,7 @@ if selected==us_title:
     "linkedin":"https://www.linkedin.com/in/joana-pires-coelho/"
     },
     {"name":"João Almeida",
-    "img": "https://raw.githubusercontent.com/FMrtnz/project_movie_recommand/main/img/joao.png",
+    "img": "https://raw.githubusercontent.com/FMrtnz/project_movie_recommand/main/img/joao2.png",
     "linkedin":"https://github.com/The-Ineffable-Alias"}
     ]
 
