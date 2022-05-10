@@ -111,11 +111,11 @@ if selected==nav_list[7]:
 
             st.write('Here are our suggestions matching ',df_movies['movie_title'].loc[key_id])
             df_display = df_movies[['movie_title','audience_rating','tomatometer_rating']].loc[closests].copy()
-            
+
             table_content = ''
             for row in range(len(df_display)):
                 table_content += '<tr><td>' + df_display['movie_title'].iloc[row] + '</td><td align=center>' + str(int(df_display['audience_rating'].iloc[row])) + '</td><td align=center>' + str(int(df_display['tomatometer_rating'].iloc[row])) + '</td></tr>'
-            
+
             st.markdown('<table><tr><th>Movie Title</th><th>Public Ratings</th><th>TomatoMeter</th></tr>' + table_content + '</table>', unsafe_allow_html=True)
             search = choice = ''
 
@@ -278,7 +278,7 @@ if selected==us_title:
     "linkedin":"https://www.linkedin.com/in/joana-pires-coelho/"
     },
     {"name":"João Almeida",
-    "img": "",
+    "img": "https://raw.githubusercontent.com/FMrtnz/project_movie_recommand/main/img/joao.png",
     "linkedin":"https://github.com/The-Ineffable-Alias"}
     ]
 
