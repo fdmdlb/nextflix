@@ -87,7 +87,7 @@ if selected == "Recommendations":
 
 
 if selected == 'About Us':
-    st.markdown('<H1 style="color:red;text-align:center;" >About Us</H1>', unsafe_allow_html=True)
+    st.markdown('<H1 style="color:red;text-align:center;" >The Team</H1>', unsafe_allow_html=True)
 
     us = [
     {"name":"Fabien Martinez",
@@ -118,3 +118,7 @@ if selected == 'About Us':
             f'<div class="us-card"><img src="{one["img"]}"><p>{one["name"]}</p><a href="{one["linkedin"]}">LinkedIn</a>',
             unsafe_allow_html=True
             )
+    st.markdown('<br><br>', unsafe_allow_html=True)
+    st.markdown('<H1 style="color:red;text-align:center;" >The Original Project</H1>', unsafe_allow_html=True)
+    st.markdown("The original project was to perform Exploratory Data Analysis of multiple data sets from IMDb and Rotten Tomatoes web sites, in order to provide a relevent movie recommendation system.<br>You may view the full project on <a href='https://github.com/FMrtnz/project_movie_recommand'>GitHub</a> and <a href='https://share.streamlit.io/fmrtnz/project_movie_recommand/main/interface.py'>Streamlit</a>.", unsafe_allow_html=True)
+    
