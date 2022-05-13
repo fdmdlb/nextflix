@@ -16,7 +16,7 @@ with st.sidebar:
 
 
 if selected == "Recommendations":
-    st.markdown('<H1 style="color:#ff4b4b;text-align:center;" >NEXTFLIX</H1>', unsafe_allow_html=True)
+    st.markdown('<H1 style="color:red;text-align:center;" >NEXTFLIX</H1>', unsafe_allow_html=True)
     
     ########################################################################
     # Recommendation system
@@ -79,20 +79,20 @@ if selected == "Recommendations":
             result_list = list(result[1][0])
             closests = result_list[1:]
 
-            st.markdown('Here are our suggestions matching <b style="color:#ff4b4b">'+(df_movies['movie_title'].loc[key_id])+'</b>', unsafe_allow_html=True)
+            st.write(f"Here are our suggestions matching **{df_movies['movie_title'].loc[key_id]}**")
             
             df_display = df_movies[['movie_title','audience_rating','tomatometer_rating','rotten_tomatoes_link']].loc[closests].copy()
 
             table_content = ''
             for row in range(len(df_display)):
-                table_content += '<tr><td align="left">' + df_display['movie_title'].iloc[row] \
-                + '</td><td>' + str(int(df_display['audience_rating'].iloc[row])) \
-                + '</td><td>' + str(int(df_display['tomatometer_rating'].iloc[row])) \
-                + '</td><td><a href="https://www.rottentomatoes.com/' + df_display['rotten_tomatoes_link'].iloc[row] + '">Rotten Tomato</a></td></tr>'
-            
-            st.markdown('<table style="text-align: center;"><tr bgcolor= "#262730"><th align="left">Movie Title</th><th width="1%">🍿</th><th width="1%">🍅</th><th width="20%">🔗</th></tr>'\
+                table_content += '<tr><td>' + df_display['movie_title'].iloc[row] \
+                + '</td><td align=center>' + str(int(df_display['audience_rating'].iloc[row])) \
+                + '</td><td align=center>' + str(int(df_display['tomatometer_rating'].iloc[row])) \
+                + '</td><td align=center><a href="https://www.rottentomatoes.com/' + df_display['rotten_tomatoes_link'].iloc[row] + '">Rotten Tomato</a></td></tr>'
+
+            st.markdown('<table align="center" width="100%"><tr><th>Movie Title</th><th align="center" width="1%">🍿</th><th align="center" width="1%">🍅</th><th align="center" width="20%">🔗</th></tr>'\
             + table_content + \
-            '<tr bgcolor= "#262730"><td colspan=4 align="center" borderwidth=0>🍿Public Rating&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;🍅Tomato Meter&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;🔗More Info</td></tr></table>', unsafe_allow_html=True)
+            '<tr><td colspan=4 align="center" borderwidth=0>🍿Public Rating&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;🍅Tomato Meter&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;🔗More Info</td></tr></table>', unsafe_allow_html=True)
 
             search = choice = ''
 
