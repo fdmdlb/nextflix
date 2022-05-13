@@ -21,7 +21,7 @@ if selected == "Recommendations":
     ########################################################################
     # Recommendation system
 
-    df_movies = pd.read_csv('D:/Programmation/nextflix/data/6ko_recommendation.csv')
+    df_movies = pd.read_csv('./data/6ko_recommendation.csv')
 
     # all-titles-no-accents-lower-case
     df_movies['simple_title'] = df_movies['movie_title'].apply(lambda title: unidecode(title).lower())
