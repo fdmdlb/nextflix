@@ -10,8 +10,8 @@ from sklearn.preprocessing import MultiLabelBinarizer
 st.set_page_config(page_title="Nextflix", page_icon='👁',menu_items={"About":'*bandev2022*'})
 
 with st.sidebar:
-    selected = option_menu('Main Menu', ['Recommendations', 'About Us'], 
-        icons=['film', 'people'], menu_icon='house', default_index=0)
+    selected = option_menu('Main Menu', ['Recommendations', 'About Us', 'Greatest Actor'], 
+        icons=['film', 'people', 'gem'], menu_icon='house', default_index=0)
 
 
 
@@ -21,7 +21,9 @@ if selected == "Recommendations":
     ########################################################################
     # Recommendation system
 
-    df_movies = pd.read_csv('./data/6ko_recommendation.csv')
+    #df_movies = pd.read_csv('./data/recommendation.csv')
+    df_movies = pd.read_csv('D:/Programmation/nextflix/data/recommendation.csv')
+
 
     # all-titles-no-accents-lower-case
     df_movies['simple_title'] = df_movies['movie_title'].apply(lambda title: unidecode(title).lower())
@@ -98,27 +100,32 @@ if selected == "Recommendations":
 
         else:
             st.write("Sorry, I couldn't find any match")
+        
     ########################################################################
 
 
 if selected == 'About Us':
     st.markdown('<H1 style="color:red;text-align:center;" >The Team</H1>', unsafe_allow_html=True)
 
-    us = [
-    {"name":"Fabien Martinez",
-     "img": "https://media-exp1.licdn.com/dms/image/C5603AQHJnh0UtSOiog/profile-displayphoto-shrink_200_200/0/1517442681233?e=1657756800&v=beta&t=LyfuwkU19EGf5Hyp5akMGx_rzIqGzo8bH1VreVcKq0k",
-    "linkedin":"https://www.linkedin.com/in/fabien-martinez-a30561109/"},
-    {"name":"François de la Bretèche",
-    "img": "https://media-exp1.licdn.com/dms/image/C4D03AQG9QwJ6igbmKA/profile-displayphoto-shrink_800_800/0/1584797342559?e=1657756800&v=beta&t=hiwVl_fchl2uEhZph6uheK_59vq5QRJixzqiGkKTvoo",
-    "linkedin":"https://www.linkedin.com/in/f-delabreteche/"},
-    {"name":"Joana Alves",
-    "img": "https://media-exp1.licdn.com/dms/image/C4D03AQFhUPgrR5wVUg/profile-displayphoto-shrink_800_800/0/1558610964713?e=1657756800&v=beta&t=zYzStxavELhinCITmuVNygzu3nH00jP3LLFKmv6hVkM",
-    "linkedin":"https://www.linkedin.com/in/joana-pires-coelho/"},
-    {"name":"João Rosa",
-    "img": "https://raw.githubusercontent.com/FMrtnz/project_movie_recommand/main/img/joao2.png",
-    "linkedin":"https://github.com/The-Ineffable-Alias"}
-    ]
+    linkedin_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">\
+                     <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>\
+                     </svg>'
 
+    us = [
+    {"name":"François",
+    "img": "https://raw.githubusercontent.com/fdmdlb/nextflix/main/img/francois.png",
+    "link":'<a href="https://www.linkedin.com/in/f-delabreteche/">'+linkedin_icon+'</a>'},
+    {"name":"João",
+    "img": "https://raw.githubusercontent.com/fdmdlb/nextflix/main/img/joao.png",
+    "link": '<a href="https://github.com/The-Ineffable-Alias">'+linkedin_icon+'</a>'},
+    {"name":"Joana",
+    "img": "https://raw.githubusercontent.com/fdmdlb/nextflix/main/img/joana.png",
+    "link": '<a href="https://www.linkedin.com/in/joana-pires-coelho/">'+linkedin_icon+'</a>'},
+    {"name":"Fabien",
+     "img": "https://raw.githubusercontent.com/fdmdlb/nextflix/main/img/fabien.png",
+    "link":'<a href="https://www.linkedin.com/in/fabien-martinez-a30561109/">'+linkedin_icon+'</a>'}
+    ]
+    
     st.markdown(
     "<style>.us-card{text-align:center; margin:.8rem 0}.us-card p{margin:.3rem 0}.us-card img{-webkit-filter: grayscale(100%);filter: grayscale(100%);border-radius:50%;width:150px;height:150px;padding:1rem;}</style>",
     unsafe_allow_html=True
@@ -129,10 +136,22 @@ if selected == 'About Us':
         with cols[index]:
             one = us[index]
             st.markdown(
-            f'<div class="us-card"><img src="{one["img"]}"><p>{one["name"]}</p><a href="{one["linkedin"]}">LinkedIn</a>',
+            f'<div class="us-card"><img src="{one["img"]}"><p>{one["name"]} {one["link"]}</p>',
             unsafe_allow_html=True
             )
     st.markdown('<br><br>', unsafe_allow_html=True)
     st.markdown('<H1 style="color:red;text-align:center;" >The Original Project</H1>', unsafe_allow_html=True)
     st.markdown("The original project was to perform Exploratory Data Analysis of multiple data sets from IMDb and Rotten Tomatoes web sites, in order to provide a relevent movie recommendation system.<br>You may view the full project on <a href='https://github.com/FMrtnz/project_movie_recommand'>GitHub</a> and <a href='https://share.streamlit.io/fmrtnz/project_movie_recommand/main/interface.py'>Streamlit</a>.", unsafe_allow_html=True)
     
+    
+    
+if selected == 'Greatest Actor':
+    st.markdown('<H1 style="color:red;text-align:center;" >The Greatest Actor</H1>', unsafe_allow_html=True)    
+    
+    st.markdown(f'<iframe width="700" height="394" src="https://www.youtube-nocookie.com/embed/hp1nTmMdYpE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', unsafe_allow_html=True)
+    
+    linkedin_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">\
+                     <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>\
+                     </svg>'
+    
+    st.markdown(linkedin_icon, unsafe_allow_html=True)
