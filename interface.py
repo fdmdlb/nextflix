@@ -10,47 +10,43 @@ from sklearn.preprocessing import MultiLabelBinarizer
 st.set_page_config(page_title="Nextflix", page_icon='👁',menu_items={"About":'*bandev2022*'})
 
 with st.sidebar:
-    selected = option_menu('Main Menu', ['Recommendations', 'About Us', 'Greatest Actor'], 
-        icons=['film', 'people', 'gem'], menu_icon='house', default_index=0)
+    selected = option_menu('Main Menu', ['Recommendations', 'About', 'Greatest Actor'], 
+               icons=['film', 'info-circle', 'gem'], menu_icon='house', default_index=0)
+
+df_movies = pd.read_csv('./data/recommendation.csv')
 
 
+# all-titles-no-accents-lower-case
+df_movies['simple_title'] = df_movies['movie_title'].apply(lambda title: unidecode(title).lower())
+
+#splitting dates into y m d as int
+df_movies['year'] = df_movies['original_release_date'].apply(lambda date: int(date[:4]))
+df_movies['month'] = df_movies['original_release_date'].apply(lambda date: int(date[5:7]))
+df_movies['day'] = df_movies['original_release_date'].apply(lambda date: int(date[8:10]))
+
+# dummifying "content rating"
+content_ratings = pd.get_dummies(df_movies['content_rating'])
+
+# dummifying "genres"
+df_movies['genres'] = df_movies['genres'].apply(lambda s: s.split(', '))
+s = df_movies['genres']
+mlb = MultiLabelBinarizer()
+genres = pd.DataFrame(mlb.fit_transform(s),columns=mlb.classes_, index=df_movies.index)
+
+# weight parameters for minkowski's distance
+# 'runtime', 'audience_rating','audience_count', 'tomatometer_rating', 'tomatometer_count','year', 'month', 'day', 'genres'x21, 'content_ratings'x6
+weights = [1, 10, 10, 5, 5, 1, 1, 1, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 5, 5, 5, 5, 5, 5]
+
+
+# defining X, and normalizing X, computing KNN
+X = pd.concat([df_movies[['runtime', 'audience_rating','audience_count', 'tomatometer_rating', 'tomatometer_count','year', 'month', 'day']],genres,content_ratings],axis=1)
+scaler = StandardScaler().fit(X)
+X_scaled = scaler.transform(X)
+distanceKNN = NearestNeighbors(n_neighbors=11, metric_params={'w': weights}).fit(X_scaled)    
 
 if selected == "Recommendations":
-    ########################################################################
-    # Recommendation system
-    df_movies = pd.read_csv('./data/recommendation.csv')
-
-    
     st.markdown('<H1 style="color:#ff4b4b;text-align:center;" >NEXTFLIX</H1>', unsafe_allow_html=True)
-
-    # all-titles-no-accents-lower-case
-    df_movies['simple_title'] = df_movies['movie_title'].apply(lambda title: unidecode(title).lower())
-
-    #splitting dates into y m d as int
-    df_movies['year'] = df_movies['original_release_date'].apply(lambda date: int(date[:4]))
-    df_movies['month'] = df_movies['original_release_date'].apply(lambda date: int(date[5:7]))
-    df_movies['day'] = df_movies['original_release_date'].apply(lambda date: int(date[8:10]))
-
-    # dummifying "content rating"
-    content_ratings = pd.get_dummies(df_movies['content_rating'])
-
-    # dummifying "genres"
-    df_movies['genres'] = df_movies['genres'].apply(lambda s: s.split(', '))
-    s = df_movies['genres']
-    mlb = MultiLabelBinarizer()
-    genres = pd.DataFrame(mlb.fit_transform(s),columns=mlb.classes_, index=df_movies.index)
-
-    # weight parameters for minkowski's distance
-    # 'runtime', 'audience_rating','audience_count', 'tomatometer_rating', 'tomatometer_count','year', 'month', 'day', 'genres'x21, 'content_ratings'x6
-    weights = [1, 10, 10, 5, 5, 1, 1, 1, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 5, 5, 5, 5, 5, 5]
-
-
-    # defining X, and normalizing X, computing KNN
-    X = pd.concat([df_movies[['runtime', 'audience_rating','audience_count', 'tomatometer_rating', 'tomatometer_count','year', 'month', 'day']],genres,content_ratings],axis=1)
-    scaler = StandardScaler().fit(X)
-    X_scaled = scaler.transform(X)
-    distanceKNN = NearestNeighbors(n_neighbors=11, metric_params={'w': weights}).fit(X_scaled)
-
+    
     # menu to type key words
     search = choice = ''
     search = st.text_input('Please enter a movie title you like: ')
@@ -88,7 +84,7 @@ if selected == "Recommendations":
                 table_content += '<tr><td align="left">' + df_display['movie_title'].iloc[row] \
                 + '</td><td>' + str(int(df_display['audience_rating'].iloc[row])) \
                 + '</td><td>' + str(int(df_display['tomatometer_rating'].iloc[row])) \
-                + '</td><td><a href="https://www.rottentomatoes.com/' + df_display['rotten_tomatoes_link'].iloc[row] + '">Rotten Tomato</a></td></tr>'
+                + '</td><td><a href="https://www.rottentomatoes.com/' + df_display['rotten_tomatoes_link'].iloc[row] + '">Rotten Tomatoes</a></td></tr>'
             
             st.markdown('<table style="text-align: center;"><tr bgcolor= "#262730"><th align="left">Movie Title</th><th width="1%">🍿</th><th width="1%">🍅</th><th width="20%">🔗</th></tr>'\
             + table_content + \
@@ -99,10 +95,18 @@ if selected == "Recommendations":
         else:
             st.write("Sorry, I couldn't find any match")
         
-    ########################################################################
 
-
-if selected == 'About Us':
+if selected == 'About':
+    
+    st.markdown('<H1 style="color:#ff4b4b;text-align:center;" >The Data</H1>', unsafe_allow_html=True)
+    sources = ['Rotten Tomatoes','Kaggle']
+    st.markdown(f'* Number of movies in the database: {str(df_movies.shape[0])}', unsafe_allow_html=True)
+    st.markdown(f'* Most recent release date: {str(df_movies.year.max())}', unsafe_allow_html=True)
+    st.markdown(f'* Sources: {", ".join(sources)}', unsafe_allow_html=True)
+        
+    
+    
+    st.markdown('<br><br>', unsafe_allow_html=True)
     st.markdown('<H1 style="color:#ff4b4b;text-align:center;" >The Team</H1>', unsafe_allow_html=True)
 
     linkedin_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">\
