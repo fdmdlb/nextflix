@@ -100,9 +100,12 @@ if selected == 'About':
     
     st.markdown('<H1 style="color:#ff4b4b;text-align:center;" >The Data</H1>', unsafe_allow_html=True)
     sources = ['Rotten Tomatoes','Kaggle']
-    st.markdown(f'* Number of movies in the database: {str(df_movies.shape[0])}', unsafe_allow_html=True)
-    st.markdown(f'* Most recent release date: {str(df_movies.year.max())}', unsafe_allow_html=True)
-    st.markdown(f'* Sources: {", ".join(sources)}', unsafe_allow_html=True)
+    st.markdown(f'<ul>\
+                      <li>Number of movies in the database: {str(df_movies.shape[0])}</li>\
+                      <li>Most recent release date: {str(df_movies.year.max())}</li>\
+                      <li>Sources: {", ".join(sources)}</li>\
+                  </ul>',
+                  unsafe_allow_html=True)
         
     
     
